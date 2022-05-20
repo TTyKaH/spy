@@ -1,5 +1,12 @@
 <template>
-  <div>s</div>
+  <div id="main" class="wrap wrap-py text-center">
+    <h1 class="mb-10">Spy</h1>
+    <div class="grid gap-5">
+      <NuxtLink to="/settings" class="btn">Начать</NuxtLink>
+      <NuxtLink to="#" class="btn">Продолжить</NuxtLink>
+      <NuxtLink to="#" class="btn">Правила</NuxtLink>
+    </div>
+  </div>
 </template>
 
 <script>

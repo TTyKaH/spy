@@ -1,11 +1,26 @@
 .wrap {
+  @apply border-l border-r;
+
   max-width: 445px;
   padding-left: 20px;
   padding-right: 20px;
   margin: auto;
+  height: 100vh;
 
   &-py {
     padding-top: 30px;
     padding-bottom: 30px;
+  }
+}
+
+.btn {
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #dfdfdf;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: #dfdfdf;
   }
 }
