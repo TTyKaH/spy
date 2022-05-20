@@ -1,9 +1,7 @@
 <template>
-  <Nuxt />
+  <div>s</div>
 </template>
 
 <script>
-export default {
-  name: 'IndexPage',
-}
+export default {}
 </script>
