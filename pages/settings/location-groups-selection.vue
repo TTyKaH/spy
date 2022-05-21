@@ -9,13 +9,11 @@
     >
       {{ g.group }}
     </div>
-    <NuxtLink
-      to="/play/roles-distribution"
-      class="btn"
-      @click="setRandomLocation()"
-    >
-      К распределению ролей
-    </NuxtLink>
+    <button @click="setRandomLocation()">
+      <NuxtLink class="btn w-full block" to="/play/roles-distribution"
+        >К распределению ролей</NuxtLink
+      >
+    </button>
   </div>
 </template>
 
