@@ -1,7 +1,7 @@
 <template>
-  <div class="set-count flex justify-between items-center gap-2">
+  <div class="set-count flex flex-wrap justify-between items-center gap-2">
     <div>{{ title }}</div>
-    <div class="flex items-center gap-2">
+    <div class="count flex justify-between items-center gap-2">
       <button class="btn" @click="decrease()">-</button>
       <div>{{ count }}</div>
       <button class="btn" @click="increase()">+</button>
@@ -37,3 +37,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.set-count {
+  .count {
+    max-width: 100px;
+    width: 100%;
+  }
+}
+</style>
