@@ -4,15 +4,18 @@
       v-if="isWhoFirstStage"
       class="grid gap-5 justify-items-center text-center"
     >
-      <div>
+      <div class="grid gap-5">
+        <h2 class="uppercase">Время вопросов</h2>
+        <div>
+          Если все готовы -<br />
+          запускайте таймер
+        </div>
         Первым задает вопрос <br />
         Игрок {{ whoFirstAsk }}
       </div>
-      <button class="btn" @click="toggle()">Понятно</button>
+      <button class="btn" @click="toggle()">К таймеру</button>
     </div>
-    <div v-else>
-      <Timer />
-    </div>
+    <Timer v-else />
   </div>
 </template>
 

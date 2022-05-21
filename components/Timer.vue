@@ -1,9 +1,9 @@
 <template>
-  <div id="timer">
+  <div id="timer" class="text-center text-4xl">
     <div>{{ time.minutes }}:{{ time.seconds }}</div>
-    <button @click="toggle()">
-      <div v-if="!isPause" class="btn" @click="stopTimer()">=</div>
-      <div v-else class="btn" @click="startTimer()">></div>
+    <button class="text-6xl" @click="toggle()">
+      <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">=</div>
+      <div v-else class="btn btn-rounded" @click="startTimer()">></div>
     </button>
   </div>
 </template>
@@ -50,3 +50,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.btn-rounded {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+</style>

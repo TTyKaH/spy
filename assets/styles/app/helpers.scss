@@ -24,4 +24,8 @@
   &:hover {
     background-color: #dfdfdf;
   }
+
+  &-rounded {
+    @apply rounded-full;
+  }
 }
