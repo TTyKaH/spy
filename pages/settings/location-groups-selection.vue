@@ -1,6 +1,6 @@
 <template>
   <div class="wrap wrap-py flex flex-col gap-5">
-    <div
+    <!-- <div
       v-for="(g, idx) in locations"
       :key="idx"
       ref="groups"
@@ -8,6 +8,14 @@
       @click="selectGroup(g.group, idx)"
     >
       {{ g.group }}
+    </div> -->
+    <div
+      v-for="(g, idx) in locations"
+      :key="idx"
+      ref="groups"
+      @click="selectGroup(g.group, idx)"
+    >
+      <LocationGroup :group="g" />
     </div>
     <button @click="setRandomLocation()">
       <NuxtLink class="btn w-full block" to="/play/roles-distribution"
@@ -31,6 +39,7 @@ export default {
   },
   methods: {
     selectGroup(groupName, idx) {
+      console.log('функция начала работу')
       if (!this.selectedGroups.includes(groupName)) {
         this.addGroup(groupName)
       } else {
