@@ -57,10 +57,10 @@ export default {
       )
     },
     formArraylocations() {
-      for (let i = 0; i < this.selectedGroups.length; i++) {
-        for (let j = 0; j < this.locations.length; j++) {
-          if (this.selectedGroups[i] === this.locations[j].group) {
-            this.selectedLocations.push(...this.locations[j].locations)
+      for (const group of this.selectedGroups) {
+        for (const el of this.locations) {
+          if (group === el.group) {
+            this.selectedLocations.push(...el.locations)
             continue
           }
         }

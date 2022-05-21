@@ -1,6 +1,28 @@
 <template>
   <div class="wrap wrap-py">
-    <div>s</div>
+    <div v-for="playerNum in playersCount" :key="playerNum">
+      <div v-if="currentPlayer === playerNum">
+        <div v-if="isFirstStage">
+          <div>
+            Игрок {{ playerNum }} <br />
+            Нажмите, чтобы узнать кто ты в этой игре
+          </div>
+          <button class="btn" @click="toggle()">Хто я</button>
+        </div>
+        <div v-else>
+          <div>Игрок {{ playerNum }}, ты: {{ checkRole(playerNum) }}</div>
+          <div v-if="checkRole(playerNum) === 'Местный'">
+            Локация: {{ selectedLocation }}
+          </div>
+          <div v-else>
+            Все кроме ТЕБЯ знают локацию.
+            <br />
+            Старайся не выдать себя и понять о какой локации все говорят
+          </div>
+          <button class="btn" @click="nextPlayer()">Понятно</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -8,12 +30,47 @@
 export default {
   data() {
     return {
-      playerCount: null,
-      whoFirstAsk: null,
-      location: null,
+      playersCount: null,
+      spiesCount: null,
+      selectedLocation: null,
       whoSpy: [],
+      currentPlayer: 1,
+      isFirstStage: true,
     }
   },
-  beforeMount() {},
+  beforeMount() {
+    this.playersCount = Number(localStorage.getItem('playersCount'))
+    this.selectedLocation = localStorage.getItem('selectedLocation')
+    this.spiesCount = Number(localStorage.getItem('spiesCount'))
+  },
+  mounted() {
+    while (this.whoSpy.length < this.spiesCount) {
+      const spyNum = this.getRandomNumber(this.playersCount)
+      if (!this.whoSpy.includes(spyNum)) {
+        this.whoSpy.push(spyNum)
+      }
+    }
+  },
+  methods: {
+    checkRole(idx) {
+      if (this.whoSpy.includes(idx)) {
+        return 'Шпион'
+      }
+      return 'Местный'
+    },
+    nextPlayer() {
+      if (this.currentPlayer < this.playersCount) {
+        this.currentPlayer = this.currentPlayer + 1
+        return this.toggle()
+      }
+      this.$router.push({ path: '/play/time-to-questions' })
+    },
+    toggle() {
+      this.isFirstStage = !this.isFirstStage
+    },
+    getRandomNumber(maxNum) {
+      return Math.floor(1 + Math.random() * maxNum)
+    },
+  },
 }
 </script>
