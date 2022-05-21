@@ -1,15 +1,16 @@
 <template>
   <div class="wrap wrap-py">
-    <div v-for="playerNum in playersCount" :key="playerNum">
+    <div v-for="playerNum in playersCount" :key="playerNum" class="text-center">
       <div v-if="currentPlayer === playerNum">
-        <div v-if="isFirstStage">
+        <div v-if="isFirstStage" class="grid justify-items-center gap-5">
+          <div>Игрок {{ playerNum }}</div>
           <div>
-            Игрок {{ playerNum }} <br />
-            Нажмите, чтобы узнать кто ты в этой игре
+            Нажмите, чтобы узнать <br />
+            кто ты в этой игре
           </div>
           <button class="btn" @click="toggle()">Хто я</button>
         </div>
-        <div v-else>
+        <div v-else class="grid gap-5 justify-items-center">
           <div>Игрок {{ playerNum }}, ты: {{ checkRole(playerNum) }}</div>
           <div v-if="checkRole(playerNum) === 'Местный'">
             Локация: {{ selectedLocation }}

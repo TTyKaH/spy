@@ -1,9 +1,12 @@
 <template>
   <div class="wrap wrap-py">
-    <div v-if="isWhoFirstStage">
+    <div
+      v-if="isWhoFirstStage"
+      class="grid gap-5 justify-items-center text-center"
+    >
       <div>
         Первым задает вопрос <br />
-        игрок {{ whoFirstAsk }}
+        Игрок {{ whoFirstAsk }}
       </div>
       <button class="btn" @click="toggle()">Понятно</button>
     </div>
