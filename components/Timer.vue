@@ -5,15 +5,15 @@
       <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">
         <img
           class="icon icon-xs"
-          src="@/assets/images/icons/icon-pause.png"
+          src="@/assets/images/icons/icon-pause.svg"
           alt=""
         />
       </div>
       <div v-else class="btn btn-rounded" @click="startTimer()">
         <!-- иконку следует сместить и заменить иконки на svg -->
         <img
-          class="icon icon-xs"
-          src="@/assets/images/icons/icon-play.png"
+          class="icon icon-xs ml-2"
+          src="@/assets/images/icons/icon-play.svg"
           alt=""
         />
       </div>

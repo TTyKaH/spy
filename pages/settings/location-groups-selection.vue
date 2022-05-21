@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     selectGroup(groupName, idx) {
-      console.log('функция начала работу')
       if (!this.selectedGroups.includes(groupName)) {
         this.addGroup(groupName)
       } else {
@@ -85,5 +84,17 @@ export default {
 <style lang="scss">
 .chosen {
   color: red;
+
+  #location-group {
+    position: relative;
+
+    &::after {
+      content: url('@/assets/images/icons/icon-check.svg');
+      position: absolute;
+      right: 0;
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 </style>
