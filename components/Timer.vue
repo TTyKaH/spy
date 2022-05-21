@@ -1,9 +1,22 @@
 <template>
-  <div id="timer" class="text-center text-4xl">
+  <div id="timer" class="text-center text-4xl grid gap-5">
     <div>{{ time.minutes }}:{{ time.seconds }}</div>
-    <button class="text-6xl" @click="toggle()">
-      <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">=</div>
-      <div v-else class="btn btn-rounded" @click="startTimer()">></div>
+    <button class="flex justify-center" @click="toggle()">
+      <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">
+        <img
+          class="icon icon-xs"
+          src="@/assets/images/icons/icon-pause.png"
+          alt=""
+        />
+      </div>
+      <div v-else class="btn btn-rounded" @click="startTimer()">
+        <!-- иконку следует сместить -->
+        <img
+          class="icon icon-xs"
+          src="@/assets/images/icons/icon-play.png"
+          alt=""
+        />
+      </div>
     </button>
   </div>
 </template>
