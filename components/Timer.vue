@@ -10,7 +10,7 @@
         />
       </div>
       <div v-else class="btn btn-rounded" @click="startTimer()">
-        <!-- иконку следует сместить -->
+        <!-- иконку следует сместить и заменить иконки на svg -->
         <img
           class="icon icon-xs"
           src="@/assets/images/icons/icon-play.png"

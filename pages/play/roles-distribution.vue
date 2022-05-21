@@ -1,10 +1,10 @@
 <template>
-  <div class="wrap wrap-py">
+  <div id="roles-distribution" class="wrap wrap-py">
     <div v-for="playerNum in playersCount" :key="playerNum" class="text-center">
       <div v-if="currentPlayer === playerNum">
         <div v-if="isFirstStage" class="grid justify-items-center gap-5">
           <div>Игрок {{ playerNum }}</div>
-          <div>
+          <div class="note">
             Нажмите, чтобы узнать <br />
             кто ты в этой игре
           </div>
@@ -12,10 +12,10 @@
         </div>
         <div v-else class="grid gap-5 justify-items-center">
           <div>Игрок {{ playerNum }}, ты: {{ checkRole(playerNum) }}</div>
-          <div v-if="checkRole(playerNum) === 'Местный'">
+          <div v-if="checkRole(playerNum) === 'Местный'" class="note">
             Локация: {{ selectedLocation }}
           </div>
-          <div v-else>
+          <div v-else class="note">
             Все кроме ТЕБЯ знают локацию.
             <br />
             Старайся не выдать себя и понять о какой локации все говорят
@@ -75,3 +75,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+#roles-distribution {
+  .note {
+    height: 81px;
+  }
+}
+</style>
