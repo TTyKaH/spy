@@ -1,14 +1,5 @@
 <template>
-  <div class="wrap wrap-py flex flex-col gap-5">
-    <!-- <div
-      v-for="(g, idx) in locations"
-      :key="idx"
-      ref="groups"
-      class="cursor-pointer"
-      @click="selectGroup(g.group, idx)"
-    >
-      {{ g.group }}
-    </div> -->
+  <div class="wrap wrap-py flex flex-col gap-2">
     <div
       v-for="(g, idx) in locations"
       :key="idx"
