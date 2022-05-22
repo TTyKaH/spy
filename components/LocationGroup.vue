@@ -1,6 +1,8 @@
 <template>
   <div id="location-group" class="cursor-pointer py-1">
-    {{ group.group }}
+    <span class="flex justify-between items-center">{{ group.group }}
+      <div class="field" />
+    </span>
   </div>
 </template>
 
@@ -9,8 +11,17 @@ export default {
   props: {
     group: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.field {
+  border: 1px solid #dfdfdf;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+</style>

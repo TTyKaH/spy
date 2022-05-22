@@ -76,6 +76,7 @@ export default {
       content: url('@/assets/images/icons/icon-check.svg');
       position: absolute;
       right: 0;
+      top: calc(50% - 10px);
       width: 20px;
       height: 20px;
     }
