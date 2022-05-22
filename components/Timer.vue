@@ -35,17 +35,21 @@ export default {
     startTimer() {
       this.timer = setInterval(() => {
         if (this.time.seconds <= 0) {
-          this.time.seconds = 60
+          if (Number(this.time.minutes) !== 0) {
+            this.time.seconds = 60
+          }
           if (this.time.minutes > 10) {
             this.time.minutes = this.time.minutes - 1
-          } else {
+          } else if (this.time.minutes > 0) {
             this.time.minutes = '0' + (this.time.minutes - 1)
           }
         }
         if (this.time.seconds > 10) {
           this.time.seconds = this.time.seconds - 1
-        } else {
+        } else if (this.time.seconds > 0) {
           this.time.seconds = '0' + (this.time.seconds - 1)
+        } else {
+          this.stopTimer()
         }
       }, 1000)
     },
