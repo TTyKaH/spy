@@ -1,17 +1,10 @@
 <template>
   <div class="wrap wrap-py flex flex-col gap-2">
-    <div
-      v-for="(g, idx) in locations"
-      :key="idx"
-      ref="groups"
-      @click="selectGroup(g.group, idx)"
-    >
+    <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="selectGroup(g.group, idx)">
       <LocationGroup :group="g" />
     </div>
     <button @click="setRandomLocation()">
-      <NuxtLink class="btn w-full block" to="/play/roles-distribution"
-        >К распределению ролей</NuxtLink
-      >
+      <NuxtLink class="btn w-full block" to="/play/roles-distribution">К распределению ролей</NuxtLink>
     </button>
   </div>
 </template>
