@@ -31,6 +31,9 @@ export default {
       localStorage.setItem('playersCount', this.count)
     },
     decrease() {
+      if (this.count === 3) {
+        return
+      }
       this.count = this.count - 1
       localStorage.setItem('playersCount', this.count)
     },

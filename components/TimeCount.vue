@@ -31,6 +31,9 @@ export default {
       localStorage.setItem('timeCount', this.count)
     },
     decrease() {
+      if (this.count === 5) {
+        return
+      }
       this.count = this.count - 1
       localStorage.setItem('timeCount', this.count)
     },

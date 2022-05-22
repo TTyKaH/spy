@@ -31,6 +31,9 @@ export default {
       localStorage.setItem('spiesCount', this.count)
     },
     decrease() {
+      if (this.count === 1) {
+        return
+      }
       this.count = this.count - 1
       localStorage.setItem('spiesCount', this.count)
     },
