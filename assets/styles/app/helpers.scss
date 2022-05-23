@@ -11,6 +11,13 @@
     padding-top: 30px;
     padding-bottom: 30px;
   }
+
+  &-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 120px;
+  }
 }
 
 .btn {
@@ -27,6 +34,10 @@
 
   &-rounded {
     @apply rounded-full;
+  }
+
+  &-wide {
+    width: 48px;
   }
 }
 

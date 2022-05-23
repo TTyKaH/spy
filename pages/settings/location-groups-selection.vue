@@ -1,10 +1,13 @@
 <template>
-  <div class="wrap wrap-py flex flex-col gap-2">
-    <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="selectGroup(g.group, idx)">
-      <LocationGroup :group="g" />
+  <div class="wrap wrap-py flex flex-col gap-10">
+    <h2>Выбор локаций</h2>
+    <div class="grid gap-5">
+      <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="selectGroup(g.group, idx)">
+        <LocationGroup :group="g" />
+      </div>
     </div>
     <button @click="setRandomLocation()">
-      <NuxtLink class="btn w-full block" to="/play/roles-distribution">К распределению ролей</NuxtLink>
+      <NuxtLink class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
     </button>
   </div>
 </template>
@@ -67,7 +70,7 @@ export default {
 
 <style lang="scss">
 .chosen {
-  color: red;
+  color: #ff2400;
 
   #location-group {
     position: relative;
@@ -76,9 +79,9 @@ export default {
       content: url('@/assets/images/icons/icon-check.svg');
       position: absolute;
       right: 0;
-      top: calc(50% - 10px);
-      width: 20px;
-      height: 20px;
+      top: calc(50% - 12px);
+      width: 25px;
+      height: 25px;
     }
   }
 }

@@ -5,7 +5,7 @@
         <div v-if="isFirstStage" class="grid justify-items-center gap-5">
           <div>Игрок {{ playerNum }}</div>
           <div class="note">
-            Нажмите, чтобы узнать <br />
+            Нажмите, чтобы узнать
             кто ты в этой игре
           </div>
           <button class="btn" @click="toggle()">Хто я</button>
@@ -15,12 +15,12 @@
           <div v-if="checkRole(playerNum) === 'Местный'" class="note">
             Локация: {{ selectedLocation }}
           </div>
-          <div v-else class="note">
+          <div v-else>
             Все кроме ТЕБЯ знают локацию.
-            <br />
             Старайся не выдать себя и понять о какой локации все говорят
           </div>
-          <button class="btn" @click="nextPlayer()">Понятно</button>
+          <button v-if="currentPlayer !== playersCount" class="btn" @click="nextPlayer()">Понятно</button>
+          <NuxtLink v-else to="/play/time-to-questions" class="btn">Понятно</NuxtLink>
         </div>
       </div>
     </div>
@@ -62,9 +62,8 @@ export default {
     nextPlayer() {
       if (this.currentPlayer < this.playersCount) {
         this.currentPlayer = this.currentPlayer + 1
-        return this.toggle()
+        this.toggle()
       }
-      this.$router.push({ path: '/play/time-to-questions' })
     },
     toggle() {
       this.isFirstStage = !this.isFirstStage
@@ -75,11 +74,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-#roles-distribution {
-  .note {
-    height: 81px;
-  }
-}
-</style>

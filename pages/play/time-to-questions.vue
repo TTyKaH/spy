@@ -1,17 +1,12 @@
 <template>
-  <div class="wrap wrap-py">
-    <div
-      v-if="isWhoFirstStage"
-      class="grid gap-5 justify-items-center text-center"
-    >
+  <div class="wrap wrap-py wrap-center">
+    <div v-if="isWhoFirstStage" class="grid gap-5 justify-items-center text-center">
       <div class="grid gap-5">
         <h2 class="uppercase">Время вопросов</h2>
         <div>
-          Если все готовы -<br />
-          запускайте таймер
+          Если все готовы - запускайте таймер
         </div>
-        Первым задает вопрос <br />
-        Игрок {{ whoFirstAsk }}
+        Первым задает вопрос Игрок {{ whoFirstAsk }}
       </div>
       <button class="btn" @click="toggle()">К таймеру</button>
     </div>

@@ -1,10 +1,13 @@
 <template>
-  <div id="settings" class="wrap wrap-py flex flex-col gap-5">
-    <PlayersCount title="Количество игроков:" />
-    <SpiesCount title="Количество шпионов:" />
-    <TimeCount title="Продолжительность игры:" />
+  <div id="settings" class="wrap wrap-py flex flex-col gap-10">
+    <h2>Настройки игры</h2>
+    <div class="grid gap-5">
+      <PlayersCount title="Игроки:" />
+      <SpiesCount title="Шпионы:" />
+      <TimeCount title="Время:" />
+    </div>
     <NuxtLink to="/settings/location-groups-selection" class="btn">
-      К выбору локаций
+      Дальше
     </NuxtLink>
   </div>
 </template>
