@@ -6,8 +6,8 @@
     </div>
     <div class="grid gap-5">
       <NuxtLink to="/settings" class="btn">Начать</NuxtLink>
-      <NuxtLink to="#" class="btn">Продолжить</NuxtLink>
-      <NuxtLink to="#" class="btn">Правила</NuxtLink>
+      <NuxtLink to="#" class="btn btn-disabled">Продолжить</NuxtLink>
+      <NuxtLink to="/rules" class="btn">Правила</NuxtLink>
     </div>
   </div>
 </template>
