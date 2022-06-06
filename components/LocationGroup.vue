@@ -1,5 +1,5 @@
 <template>
-  <div id="location-group" class="cursor-pointer py-1">
+  <div id="location-group" class="cursor-pointer py-4">
     <span class="flex justify-between items-center">{{ group.group }}
       <div class="field" />
     </span>

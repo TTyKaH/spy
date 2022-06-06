@@ -1,14 +1,23 @@
 <template>
-  <div class="wrap wrap-py flex flex-col gap-10">
-    <h2>Выбор локаций</h2>
-    <div class="grid gap-5">
-      <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="selectGroup(g.group, idx)">
-        <LocationGroup :group="g" />
+  <div class="wrap wrap-py flex flex-col justify-between">
+    <div class="grid overflow-hidden">
+      <div class="grid gap-10">
+        <h2>Выбор локаций</h2>
+        <div class="line"></div>
+      </div>
+      <div class="grid overflow-x-auto scrollbar">
+        <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="selectGroup(g.group, idx)">
+          <LocationGroup :group="g" />
+        </div>
       </div>
     </div>
-    <button @click="setRandomLocation()">
-      <NuxtLink class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
-    </button>
+    <div class="grid gap-10">
+      <div class="line"></div>
+      <button :disabled="!isCheckedGroups" @click="setRandomLocation()">
+        <NuxtLink v-if="isCheckedGroups" class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
+        <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -19,6 +28,11 @@ export default {
       locations: null,
       selectedGroups: [],
       selectedLocations: [],
+    }
+  },
+  computed: {
+    isCheckedGroups() {
+      return this.selectedGroups.length !== 0
     }
   },
   mounted() {
@@ -83,6 +97,14 @@ export default {
       width: 25px;
       height: 25px;
     }
+  }
+}
+
+.scrollbar {
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: 0;
   }
 }
 </style>

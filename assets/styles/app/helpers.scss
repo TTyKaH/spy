@@ -39,6 +39,14 @@
   &-wide {
     width: 48px;
   }
+
+  &-disabled {
+    color: #d4d4d4;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
 }
 
 .icon {
@@ -46,4 +54,10 @@
     width: 44px;
     height: 44px;
   }
+}
+
+.line {
+  background: #dfdfdf;
+  width: 100%;
+  height: 2px;
 }
