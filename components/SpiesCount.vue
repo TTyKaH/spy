@@ -19,16 +19,19 @@ export default {
   },
   data() {
     return {
-      count: null,
+      count: null
     }
   },
   mounted() {
-    this.count = Number(localStorage.spiesCount)
+    this.count = Number(localStorage.getItem('spiesCount'))
   },
   methods: {
     increase() {
-      this.count = this.count + 1
-      localStorage.setItem('spiesCount', this.count)
+      const playersCount = Number(localStorage.getItem('playersCount'))
+      if (playersCount - this.count > 2) {
+        this.count = this.count + 1
+        localStorage.setItem('spiesCount', this.count)
+      }
     },
     decrease() {
       if (this.count === 1) {
