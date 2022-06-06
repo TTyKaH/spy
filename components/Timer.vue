@@ -1,5 +1,5 @@
 <template>
-  <div id="timer" class="text-center text-5xl grid gap-5">
+  <div id="timer" class="flex flex-col justify-center h-full gap-5 text-center text-5xl">
     <div>{{ time.minutes }}:{{ time.seconds }}</div>
     <button class="flex justify-center" @click="toggle()">
       <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">

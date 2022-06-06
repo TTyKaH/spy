@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap wrap-py wrap-center">
-    <div v-if="isWhoFirstStage" class="grid gap-5 justify-items-center text-center">
+  <div class="wrap wrap-py">
+    <div v-if="isWhoFirstStage" class=" flex flex-col justify-between text-center h-full">
       <div class="grid gap-5">
         <h2 class="uppercase">Время вопросов</h2>
         <div>
