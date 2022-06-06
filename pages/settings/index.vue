@@ -1,10 +1,12 @@
 <template>
-  <div id="settings" class="wrap wrap-py flex flex-col gap-10">
-    <h2>Настройки игры</h2>
-    <div class="grid gap-5">
-      <PlayersCount title="Игроки:" />
-      <SpiesCount title="Шпионы:" />
-      <TimeCount title="Время:" />
+  <div id="settings" class="wrap wrap-py flex flex-col justify-between">
+    <div class="grid gap-10">
+      <h2>Настройки игры</h2>
+      <div class="grid gap-5">
+        <PlayersCount title="Игроки:" />
+        <SpiesCount title="Шпионы:" />
+        <TimeCount title="Время:" />
+      </div>
     </div>
     <NuxtLink to="/settings/location-groups-selection" class="btn">
       Дальше
