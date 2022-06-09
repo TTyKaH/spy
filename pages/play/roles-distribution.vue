@@ -51,6 +51,9 @@ export default {
       isFirstStage: true,
     }
   },
+  head: {
+    title: 'spy - role distribution',
+  },
   beforeMount() {
     this.playersCount = Number(localStorage.getItem('playersCount'))
     this.selectedLocation = localStorage.getItem('selectedLocation')

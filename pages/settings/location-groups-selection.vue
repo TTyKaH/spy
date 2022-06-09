@@ -30,6 +30,9 @@ export default {
       selectedLocations: [],
     }
   },
+  head: {
+    title: 'spy - choose locations',
+  },
   computed: {
     isCheckedGroups() {
       return this.selectedGroups.length !== 0

@@ -66,6 +66,9 @@ export default {
       ],
     }
   },
+  head: {
+    title: 'spy - settings',
+  },
   beforeMount() {
     localStorage.clear()
     localStorage.setItem('playersCount', 3)

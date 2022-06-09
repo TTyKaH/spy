@@ -22,6 +22,9 @@ export default {
       isWhoFirstStage: true,
     }
   },
+  head: {
+    title: 'spy - time to questions',
+  },
   beforeMount() {
     const playersCount = Number(localStorage.getItem('playersCount'))
     this.whoFirstAsk = this.getRandomNumber(playersCount)
