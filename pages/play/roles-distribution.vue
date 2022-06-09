@@ -6,20 +6,19 @@
           <div v-if="isFirstStage" class="flex flex-col justify-between h-auto">
             <div class="grid justify-items-center gap-5">
               <div>Игрок {{ playerNum }}</div>
-              <div class="note">
-                Нажмите, чтобы узнать
-                кто ты в этой игре
+              <div>
+                Нажмите, чтобы узнать кто ты в этой игре
               </div>
             </div>
           </div>
           <div v-else class="grid gap-5 justify-items-center">
             <div class="flex flex-col items-center">
-              <div>Игрок {{ playerNum }}, ты:</div>
-              <div>{{ checkRole(playerNum) }}</div>
               <img v-if="checkRole(playerNum) === 'Местный'" src="@/assets/images/local.png" width="150px" alt="">
               <img v-else src="@/assets/images/spy.png" width="150px" alt="">
+              <div class="mt-10">Игрок {{ playerNum }}, ты:</div>
+              <div>{{ checkRole(playerNum) }}</div>
             </div>
-            <div v-if="checkRole(playerNum) === 'Местный'" class="note">
+            <div v-if="checkRole(playerNum) === 'Местный'">
               Локация: {{ selectedLocation }}
             </div>
             <div v-else>
