@@ -32,6 +32,10 @@
     background-color: #dfdfdf;
   }
 
+  &-without-p-correction {
+    padding: 5px;
+  }
+
   &-rounded {
     @apply rounded-full;
   }

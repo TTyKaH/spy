@@ -6,7 +6,9 @@
 </template>
 
 <script>
+import Placeholder from '~/components/Placeholder.vue'
 export default {
+  components: [Placeholder],
   mounted() {
     setTimeout(() => {
       document.getElementsByClassName('disclaimer')[0].remove()
