@@ -1,6 +1,6 @@
 <template>
-  <div id="timer" class="flex flex-col justify-center h-full gap-5 text-center text-5xl">
-    <div>{{ time.minutes }}:{{ time.seconds }}</div>
+  <div id="timer" class="flex flex-col justify-center h-full gap-5 text-center relative">
+    <div class="text-5xl">{{ time.minutes }}:{{ time.seconds }}</div>
     <button class="flex justify-center" @click="toggle()">
       <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">
         <img class="icon icon-xs" src="@/assets/images/icons/icon-pause.svg" alt="" />
@@ -10,6 +10,10 @@
         <img class="icon icon-xs ml-2" src="@/assets/images/icons/icon-play.svg" alt="" />
       </div>
     </button>
+    <div v-if="isPause && isStarted" class="grid gap-5 absolute bottom-0 right-0 left-0">
+      <NuxtLink to="/" class="btn">Местные победили</NuxtLink>
+      <NuxtLink to="/" class="btn">Шпионы победили</NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -23,6 +27,7 @@ export default {
       },
       timer: null,
       isPause: true,
+      isStarted: false,
     }
   },
   beforeMount() {
@@ -33,6 +38,9 @@ export default {
       this.isPause = !this.isPause
     },
     startTimer() {
+      if (!this.isStarted) {
+        this.isStarted = !this.isStarted
+      }
       this.timer = setInterval(() => {
         if (this.time.seconds <= 0) {
           if (Number(this.time.minutes) !== 0) {
