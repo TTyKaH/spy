@@ -21,7 +21,7 @@
       <div class="">
         <div class="flex justify-center gap-20 pt-10">
           <button class="btn btn-rounded btn-without-p-correction" @click="prev()">
-            <img class="translate-left" src="@/assets/images/icons/angle-left.svg" width="75px" alt=""></img>
+            <img class="translate-left" src="@/assets/images/icons/angle-left.svg" width="75px" alt="">
           </button>
           <button class="btn btn-rounded btn-without-p-correction" @click="next()">
             <img class="translate-right" src="@/assets/images/icons/angle-right.svg" width="75px" alt="">
