@@ -11,8 +11,8 @@
       </div>
     </button>
     <div v-if="isPause && isStarted" class="grid gap-5 absolute bottom-0 right-0 left-0">
-      <NuxtLink to="/play/local-win" class="btn">Местные победили</NuxtLink>
-      <NuxtLink to="/play/spy-win" class="btn">Шпионы победили</NuxtLink>
+      <NuxtLink to="/win" class="btn" @click.native="win('Местные')">Местные победили</NuxtLink>
+      <NuxtLink to="/win" class="btn" @click.native="win('Шпионы')">Шпионы победили</NuxtLink>
     </div>
   </div>
 </template>
@@ -23,11 +23,11 @@ export default {
     return {
       time: {
         minutes: '00',
-        seconds: '00',
+        seconds: '00'
       },
       timer: null,
       isPause: true,
-      isStarted: false,
+      isStarted: false
     }
   },
   beforeMount() {
@@ -64,7 +64,11 @@ export default {
     stopTimer() {
       clearInterval(this.timer)
     },
-  },
+    win(who) {
+      console.log('туть')
+      localStorage.setItem('whoWin', who)
+    }
+  }
 }
 </script>
 

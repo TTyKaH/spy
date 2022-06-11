@@ -19,11 +19,11 @@ export default {
   data() {
     return {
       whoFirstAsk: null,
-      isWhoFirstStage: true,
+      isWhoFirstStage: true
     }
   },
   head: {
-    title: 'spy - time to questions',
+    title: 'spy - time to questions'
   },
   beforeMount() {
     const playersCount = Number(localStorage.getItem('playersCount'))
@@ -35,7 +35,7 @@ export default {
     },
     toggle() {
       this.isWhoFirstStage = !this.isWhoFirstStage
-    },
-  },
+    }
+  }
 }
 </script>

@@ -48,11 +48,11 @@ export default {
       selectedLocation: null,
       whoSpy: [],
       currentPlayer: 1,
-      isFirstStage: true,
+      isFirstStage: true
     }
   },
   head: {
-    title: 'spy - role distribution',
+    title: 'spy - role distribution'
   },
   beforeMount() {
     this.playersCount = Number(localStorage.getItem('playersCount'))
@@ -66,6 +66,7 @@ export default {
         this.whoSpy.push(spyNum)
       }
     }
+    localStorage.setItem('whoSpies', JSON.stringify(this.whoSpy))
   },
   methods: {
     checkRole(idx) {
@@ -85,7 +86,7 @@ export default {
     },
     getRandomNumber(maxNum) {
       return Math.floor(1 + Math.random() * maxNum)
-    },
-  },
+    }
+  }
 }
 </script>
