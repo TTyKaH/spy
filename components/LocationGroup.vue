@@ -8,10 +8,13 @@
 
 <script>
 export default {
+  name: "LocationGroup",
   props: {
     group: {
       type: Object,
-      default: () => { },
+      default: () => {
+        return {}
+      },
     },
   },
 }

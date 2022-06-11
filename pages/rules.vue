@@ -85,6 +85,9 @@ export default {
       ]
     }
   },
+  head: {
+    title: 'spy - rules',
+  },
   methods: {
     prev() {
       if (this.current === 0) return

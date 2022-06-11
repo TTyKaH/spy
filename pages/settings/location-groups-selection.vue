@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-      locations: null,
+      locations: [],
       selectedGroups: [],
       selectedLocations: [],
     }

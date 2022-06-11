@@ -11,8 +11,8 @@
       </div>
     </button>
     <div v-if="isPause && isStarted" class="grid gap-5 absolute bottom-0 right-0 left-0">
-      <NuxtLink to="/" class="btn">Местные победили</NuxtLink>
-      <NuxtLink to="/" class="btn">Шпионы победили</NuxtLink>
+      <NuxtLink to="/play/local-win" class="btn">Местные победили</NuxtLink>
+      <NuxtLink to="/play/spy-win" class="btn">Шпионы победили</NuxtLink>
     </div>
   </div>
 </template>
