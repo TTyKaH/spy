@@ -20,54 +20,38 @@ export default {
     return {
       locations: [
         {
-          group: 'Открытые',
-          locations: ['Пляж', 'Кладбище'],
+          groupName: 'Спорт',
+          locations: ['Спорт 1', 'Спорт 2']
         },
         {
-          group: 'Закрытые',
-          locations: ['Подвал', 'Чердак'],
+          groupName: 'Досуг',
+          locations: ['Досуг 1', 'Досуг 2']
         },
         {
-          group: 'Природа',
-          locations: ['Озеро', 'Река'],
+          groupName: 'Деятельность',
+          locations: ['Деятельность 1', 'Деятельность 2']
         },
         {
-          group: 'Группа 1',
-          locations: ['Пляж 2', 'Кладбище 2'],
+          groupName: 'Закрытые',
+          locations: ['Закрытые 1', 'Закрытые 2']
         },
         {
-          group: 'Группа 2',
-          locations: ['Подвал 2', 'Чердак 2'],
+          groupName: 'Открытые',
+          locations: ['Открытые 1', 'Открытые 2']
         },
         {
-          group: 'Группа 3',
-          locations: ['Озеро 2', 'Река 2'],
+          groupName: 'Транспорт',
+          locations: ['Транспорт 1', 'Транспорт 2']
         },
         {
-          group: 'Группа 4',
-          locations: ['Озеро 2', 'Река 2'],
-        },
-        {
-          group: 'Группа 5',
-          locations: ['Озеро 2', 'Река 2'],
-        },
-        {
-          group: 'Группа 6',
-          locations: ['Озеро 2', 'Река 2'],
-        },
-        {
-          group: 'Группа 7',
-          locations: ['Озеро 2', 'Река 2'],
-        },
-        {
-          group: 'Группа 8',
-          locations: ['Озеро 2', 'Река 2'],
-        },
-      ],
+          groupName: 'Другое',
+          locations: ['Другое 1', 'Другое 2']
+        }
+      ]
     }
   },
   head: {
-    title: 'spy - settings',
+    title: 'spy - settings'
   },
   beforeMount() {
     localStorage.clear()
@@ -75,6 +59,6 @@ export default {
     localStorage.setItem('spiesCount', 1)
     localStorage.setItem('timeCount', 10)
     localStorage.setItem('locations', JSON.stringify(this.locations))
-  },
+  }
 }
 </script>

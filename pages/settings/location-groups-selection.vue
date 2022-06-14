@@ -6,7 +6,7 @@
         <div class="line"></div>
       </div>
       <div class="grid overflow-x-auto scrollbar">
-        <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="selectGroup(g.group, idx)">
+        <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="checkGroup(g.groupName, idx)">
           <LocationGroup :group="g" />
         </div>
       </div>
@@ -27,11 +27,11 @@ export default {
     return {
       locations: [],
       selectedGroups: [],
-      selectedLocations: [],
+      selectedLocations: []
     }
   },
   head: {
-    title: 'spy - choose locations',
+    title: 'spy - choose locations'
   },
   computed: {
     isCheckedGroups() {
@@ -42,13 +42,13 @@ export default {
     this.locations = JSON.parse(localStorage.getItem('locations'))
   },
   methods: {
-    selectGroup(groupName, idx) {
+    checkGroup(groupName, idx) {
       if (!this.selectedGroups.includes(groupName)) {
         this.addGroup(groupName)
       } else {
         this.removeGroup(groupName)
       }
-      this.toggle(idx)
+      this.toggleCheckbox(idx)
     },
     addGroup(groupName) {
       this.selectedGroups.push(groupName)
@@ -57,21 +57,19 @@ export default {
       const idx = this.selectedGroups.indexOf(groupName)
       this.selectedGroups.splice(idx, 1)
     },
-    toggle(idx) {
+    toggleCheckbox(idx) {
       this.$refs.groups[idx].classList.toggle('chosen')
     },
     setRandomLocation() {
       this.formArraylocations()
       const locationIdx = this.getRandomNumber(this.selectedLocations.length)
-      localStorage.setItem(
-        'selectedLocation',
-        this.selectedLocations[locationIdx]
-      )
+      const selectedLocation = this.selectedLocations[locationIdx]
+      localStorage.setItem('selectedLocation', selectedLocation)
     },
     formArraylocations() {
       for (const group of this.selectedGroups) {
         for (const el of this.locations) {
-          if (group === el.group) {
+          if (group === el.groupName) {
             this.selectedLocations.push(...el.locations)
             continue
           }
@@ -79,9 +77,9 @@ export default {
       }
     },
     getRandomNumber(maxNum) {
-      return Math.floor(1 + Math.random() * maxNum)
-    },
-  },
+      return Math.floor(Math.random() * maxNum)
+    }
+  }
 }
 </script>
 

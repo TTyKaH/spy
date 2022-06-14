@@ -1,6 +1,6 @@
 <template>
   <div id="location-group" class="cursor-pointer py-4">
-    <span class="flex justify-between items-center">{{ group.group }}
+    <span class="flex justify-between items-center">{{ group.groupName }}
       <div class="field" />
     </span>
   </div>
@@ -8,15 +8,15 @@
 
 <script>
 export default {
-  name: "LocationGroup",
+  name: 'LocationGroup',
   props: {
     group: {
       type: Object,
       default: () => {
         return {}
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>
 
