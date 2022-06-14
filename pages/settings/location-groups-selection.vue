@@ -25,7 +25,6 @@
 export default {
   data() {
     return {
-      locations: [],
       selectedGroups: [],
       selectedLocations: []
     }
@@ -34,12 +33,12 @@ export default {
     title: 'spy - choose locations'
   },
   computed: {
+    locations() {
+      return this.$store.state.locations.locations
+    },
     isCheckedGroups() {
       return this.selectedGroups.length !== 0
     }
-  },
-  mounted() {
-    this.locations = JSON.parse(localStorage.getItem('locations'))
   },
   methods: {
     checkGroup(groupName, idx) {

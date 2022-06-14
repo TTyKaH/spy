@@ -78,11 +78,20 @@ export default {
     title: 'spy - settings'
   },
   beforeMount() {
-    localStorage.clear()
-    localStorage.setItem('playersCount', 3)
-    localStorage.setItem('spiesCount', 1)
-    localStorage.setItem('timeCount', 10)
-    localStorage.setItem('locations', JSON.stringify(this.locations))
+    const playersCount = localStorage.getItem('playersCount')
+    const spiesCount = localStorage.getItem('spiesCount')
+    const timeCount = localStorage.getItem('timeCount')
+    if (
+      playersCount === null ||
+      playersCount === 3 ||
+      spiesCount === 1 ||
+      timeCount === 10
+    ) {
+      localStorage.clear()
+      localStorage.setItem('playersCount', 3)
+      localStorage.setItem('spiesCount', 1)
+      localStorage.setItem('timeCount', 10)
+    }
   }
 }
 </script>
