@@ -85,7 +85,7 @@ export default {
       this.isFirstStage = !this.isFirstStage
     },
     getRandomNumber(maxNum) {
-      return Math.floor(Math.random() * maxNum)
+      return Math.floor(1 + Math.random() * maxNum)
     }
   }
 }
