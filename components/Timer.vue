@@ -39,8 +39,8 @@ export default {
     }
   },
   beforeMount() {
-    const leftMinutes = JSON.parse(localStorage.getItem('leftMinutes'))
-    const leftSeconds = JSON.parse(localStorage.getItem('leftSeconds'))
+    const leftMinutes = localStorage.getItem('leftMinutes')
+    const leftSeconds = localStorage.getItem('leftSeconds')
     if (leftMinutes === null || leftSeconds === null) {
       this.time.minutes = localStorage.getItem('timeCount')
       this.time.seconds = '00'
@@ -83,8 +83,9 @@ export default {
     win(who) {
       localStorage.setItem('whoWin', who)
       localStorage.setItem('isGameOn', false)
-      localStorage.setItem('leftMinutes', null)
-      localStorage.setItem('leftSeconds', null)
+      localStorage.removeItem('leftMinutes')
+      localStorage.removeItem('leftSeconds')
+      console.log(typeof localStorage.getItem('leftMinutes'))
     }
   }
 }
