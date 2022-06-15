@@ -30,8 +30,24 @@ export default {
       isStarted: false
     }
   },
+  watch: {
+    'time.minutes'(newVal, oldVal) {
+      localStorage.setItem('leftMinutes', this.time.minutes)
+    },
+    'time.seconds'(newVal, oldVal) {
+      localStorage.setItem('leftSeconds', this.time.seconds)
+    }
+  },
   beforeMount() {
-    this.time.minutes = localStorage.getItem('timeCount')
+    const leftMinutes = JSON.parse(localStorage.getItem('leftMinutes'))
+    const leftSeconds = JSON.parse(localStorage.getItem('leftSeconds'))
+    if (leftMinutes === null || leftSeconds === null) {
+      this.time.minutes = localStorage.getItem('timeCount')
+      this.time.seconds = '00'
+    } else {
+      this.time.minutes = leftMinutes
+      this.time.seconds = leftSeconds
+    }
   },
   methods: {
     toggle() {
@@ -65,8 +81,10 @@ export default {
       clearInterval(this.timer)
     },
     win(who) {
-      console.log('туть')
       localStorage.setItem('whoWin', who)
+      localStorage.setItem('isGameOn', false)
+      localStorage.setItem('leftMinutes', null)
+      localStorage.setItem('leftSeconds', null)
     }
   }
 }

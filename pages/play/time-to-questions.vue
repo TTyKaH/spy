@@ -25,9 +25,14 @@ export default {
   head: {
     title: 'spy - time to questions'
   },
-  beforeMount() {
-    const playersCount = Number(localStorage.getItem('playersCount'))
-    this.whoFirstAsk = this.getRandomNumber(playersCount)
+  mounted() {
+    if (localStorage.getItem('isGameOn') === null) {
+      localStorage.setItem('isGameOn', true)
+      const playersCount = Number(localStorage.getItem('playersCount'))
+      this.whoFirstAsk = this.getRandomNumber(playersCount)
+    } else {
+      this.isWhoFirstStage = false
+    }
   },
   methods: {
     getRandomNumber(maxNum) {

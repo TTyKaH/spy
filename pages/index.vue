@@ -6,12 +6,19 @@
     </div>
     <div class="grid gap-5">
       <NuxtLink to="/settings" class="btn">Начать</NuxtLink>
-      <NuxtLink to="#" class="btn btn-disabled">Продолжить</NuxtLink>
+      <button v-if="!canResume" class="btn btn-disabled">Продолжить</button>
+      <NuxtLink v-else to="/play/time-to-questions" class="btn">Продолжить</NuxtLink>
       <NuxtLink to="/rules" class="btn">Правила</NuxtLink>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    canResume() {
+      return JSON.parse(localStorage.getItem('isGameOn'))
+    }
+  }
+}
 </script>
