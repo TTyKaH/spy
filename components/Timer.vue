@@ -85,7 +85,6 @@ export default {
       localStorage.setItem('isGameOn', false)
       localStorage.removeItem('leftMinutes')
       localStorage.removeItem('leftSeconds')
-      console.log(typeof localStorage.getItem('leftMinutes'))
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="wrap wrap-py flex flex-col justify-between">
     <div class="grid overflow-hidden">
-      <div class="grid gap-10">
+      <div class="grid gap-7">
         <h2>Выбор локаций</h2>
         <div class="line"></div>
       </div>

@@ -1,5 +1,6 @@
 <template>
-  <div id="main" class="wrap wrap-py wrap-center text-center">
+  <div id="main" class="wrap wrap-py wrap-center text-center relative">
+    <DarkModeToggle class="absolute top-0 right-0 z-10"></DarkModeToggle>
     <div class="grid justify-items-center mb-10">
       <h1 class="text-4xl font-bold">Spy</h1>
       <img src="@/static/favicon.png" alt="" width="100px">
