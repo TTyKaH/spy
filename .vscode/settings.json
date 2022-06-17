@@ -42,5 +42,8 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "svg.preview.background": "white"
+  "svg.preview.background": "white",
+  "[scss]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  }
 }
