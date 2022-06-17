@@ -1,5 +1,6 @@
 * {
   .light-theme {
+    // OLD LIGHT THEME
     // --text-color: #2e2e2e;
     // --text-color-disabled: #d4d4d4;
     // --bg-color-main: #fff;
@@ -15,16 +16,24 @@
 
     --text-color: #484f58;
     --text-color-disabled: #d4d4d4;
+    --chosen-color: #000000;
+
     --bg-color-main: #fcfcfc;
+
     --bg-btn-color: #fff;
     --bg-btn-color-hover: #e3e5e8;
     --bg-btn-color-disabled: transparent;
     --bg-btn-color-disabled-hover: transparent;
+
+    --check: #484f58;
+    --bg-checkbox: #fcfcfc;
+
     --border-color: #e3e5e8;
     --border-color-hover: #dfdfdf;
-    --chosen-color: #ff2400;
+
     --shadow-color: #ededed;
     --shadow-color-hover: #cccccc;
+
   }
 
   .dark-theme {
