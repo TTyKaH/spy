@@ -1,7 +1,8 @@
 <template>
   <div id="location-group" class="cursor-pointer py-4">
-    <span class="flex justify-between items-center">{{ group.groupName }}
-      <div class="field" />
+    <span class="flex justify-between items-center =">
+      {{ group.groupName }}
+      <Checkbox :is-checked="isChecked"></Checkbox>
     </span>
   </div>
 </template>
@@ -15,16 +16,18 @@ export default {
       default: () => {
         return {}
       }
+    },
+    selectedGroups: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
+  computed: {
+    isChecked() {
+      return this.selectedGroups.includes(this.group.groupName)
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.field {
-  border: 1px solid #dfdfdf;
-  display: block;
-  width: 25px;
-  height: 25px;
-}
-</style>

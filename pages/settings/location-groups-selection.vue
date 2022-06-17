@@ -7,15 +7,18 @@
       </div>
       <div class="grid overflow-x-auto scrollbar">
         <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="checkGroup(g.groupName, idx)">
-          <LocationGroup :group="g" />
+          <LocationGroup :group="g" :selected-groups="selectedGroups" />
         </div>
       </div>
     </div>
-    <div class="grid gap-10">
+    <div class="grid gap-5">
       <div class="line"></div>
-      <button :disabled="!isCheckedGroups" @click="setRandomLocation()">
+      <button class="mt-5" :disabled="!isCheckedGroups" @click="setRandomLocation()">
         <NuxtLink v-if="isCheckedGroups" class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
         <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
+      </button>
+      <button :disabled="!isCheckedGroups" @click="setRandomLocation()">
+        <NuxtLink class="btn w-full block" to="#">Все локации</NuxtLink>
       </button>
     </div>
   </div>
@@ -57,6 +60,7 @@ export default {
       this.selectedGroups.splice(idx, 1)
     },
     toggleCheckbox(idx) {
+      // TODO: возможно класс уже не нужен
       this.$refs.groups[idx].classList.toggle('chosen')
     },
     setRandomLocation() {
@@ -84,20 +88,7 @@ export default {
 
 <style lang="scss">
 .chosen {
-  color: #ff2400;
-
-  #location-group {
-    position: relative;
-
-    &::after {
-      content: url('@/assets/images/icons/icon-check.svg');
-      position: absolute;
-      right: 0;
-      top: calc(50% - 12px);
-      width: 25px;
-      height: 25px;
-    }
-  }
+  // color: var(--chosen-color);
 }
 
 .scrollbar {
