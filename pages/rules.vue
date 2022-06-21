@@ -3,16 +3,18 @@
     <div class="wrap wrap-py flex flex-col justify-between">
       <div>
         <div v-for="(rule, idx) in rules" :key="idx">
-          <div v-if="idx === current" class="rule text-center grid gap-14">
+          <div v-if="idx === current" class="rule text-center grid gap-10">
             <Placeholder :w="200" :h="200" center />
-            <div class="grid gap-5">
-              <div class="circles flex justify-center gap-2">
-                <div
-                  v-for="(circle, circleIdx) in rules" :key="circleIdx"
-                  :class="{ 'active-circle': current === circleIdx }" class="circle" />
+            <div class="flex flex-col gap-5">
+              <div class="grid gap-3">
+                <div class="circles flex justify-center gap-2 mb-3">
+                  <div
+                    v-for="(circle, circleIdx) in rules" :key="circleIdx"
+                    :class="{ 'active-circle': current === circleIdx }" class="circle" />
+                </div>
+                <h3>{{ rule.title }}</h3>
+                <p>{{ rule.text }}</p>
               </div>
-              <h3>{{ rule.title }}</h3>
-              <p>{{ rule.text }}</p>
               <button v-if="current === rules.length - 1">
                 <NuxtLink class="btn w-full block" to="/">На главную</NuxtLink>
               </button>
@@ -20,15 +22,21 @@
           </div>
         </div>
       </div>
-      <div class="">
-        <div class="flex justify-center gap-20 pt-10">
-          <button class="btn btn-rounded btn-without-p-correction" @click="prev()">
-            <img class="translate-left" src="@/assets/images/icons/angle-left.svg" width="75px" alt="">
-          </button>
-          <button class="btn btn-rounded btn-without-p-correction" @click="next()">
-            <img class="translate-right" src="@/assets/images/icons/angle-right.svg" width="75px" alt="">
-          </button>
-        </div>
+      <div class="flex justify-center gap-20 pt-10">
+        <button class="btn btn-without-p-correction" @click="prev()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="btn btn-without-p-correction" @click="next()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -82,7 +90,8 @@ export default {
         },
         {
           title: 'Удачной игры!',
-          text: 'PS Это не релизная версия! Могут встречаться баги и непредвиденное поведение!'
+          // text: 'PS Это не релизная версия! Могут встречаться баги и непредвиденное поведение!'
+          text: 'Настраивайте игру, выбирайте локацию и дерзайте'
         }
       ]
     }
@@ -107,8 +116,8 @@ export default {
 #rules {
   .circles {
     .circle {
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       border: 2px solid #dfdfdf;
       border-radius: 100%;
     }
@@ -119,12 +128,15 @@ export default {
     }
   }
 
-  .translate-left {
-    transform: translateX(-3px);
+  h3 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 18px;
   }
 
-  .translate-right {
-    transform: translateX(3px);
+  button {
+    font-size: 20px;
   }
 }
 </style>

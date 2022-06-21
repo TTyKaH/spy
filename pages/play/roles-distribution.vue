@@ -16,10 +16,14 @@
               <img v-if="checkRole(playerNum) === 'Местный'" src="@/assets/images/local.png" width="150px" alt="">
               <img v-else src="@/assets/images/spy.png" width="150px" alt="">
               <div class="mt-10">Игрок {{ playerNum }}, ты:</div>
-              <div>{{ checkRole(playerNum) }}</div>
+              <div class="font-black">{{ checkRole(playerNum) }}</div>
             </div>
             <div v-if="checkRole(playerNum) === 'Местный'">
-              Локация: {{ selectedLocation }}
+              Локация:
+              <br>
+              <span class="font-black">
+                {{ selectedLocation }}
+              </span>
             </div>
             <div v-else>
               Все кроме ТЕБЯ знают локацию.

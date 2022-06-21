@@ -31,9 +31,6 @@ export default {
     border-radius: 5px;
     border: 1px solid var(--border-color);
     background-color: var(--bg-checkbox);
-
-    svg {
-    }
   }
 }
 </style>
