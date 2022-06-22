@@ -24,7 +24,7 @@ export default {
     const spiesCount = localStorage.getItem('spiesCount')
     const timeCount = localStorage.getItem('timeCount')
     if (playersCount === null || spiesCount === null || timeCount === null) {
-      localStorage.clear()
+      // localStorage.clear()
       localStorage.setItem('playersCount', 3)
       localStorage.setItem('spiesCount', 1)
       localStorage.setItem('timeCount', 10)
