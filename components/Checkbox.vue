@@ -29,7 +29,7 @@ export default {
     width: 34px;
     height: 34px;
     border-radius: 5px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-checkbox);
     background-color: var(--bg-checkbox);
   }
 }

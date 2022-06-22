@@ -1,18 +1,19 @@
 <template>
   <div
     id="app"
-    :class="dark ? 'dark-theme' : 'light-theme'">
+    :class="isDarkTheme ? 'dark-theme' : 'light-theme'">
     <Nuxt />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import Placeholder from '~/components/Placeholder.vue'
 export default {
-  components: [Placeholder, mapGetters],
+  components: [Placeholder],
   computed: {
-    ...mapGetters(['dark'])
+    isDarkTheme() {
+      return this.$store.getters['theme/dark']
+    }
   }
 }
 </script>

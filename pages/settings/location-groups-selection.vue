@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     locations() {
-      return this.$store.state.locations.locations
+      return this.$store.getters['locations/getLocations']
     },
     isCheckedGroups() {
       return this.selectedGroups.length !== 0

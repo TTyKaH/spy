@@ -7,9 +7,9 @@
       focus-visible:ring-2 focus-visible:ring-green-400
       rounded-lg
     "
-    @click="toggleDarkMode">
+    @click="toggleTheme()">
     <svg
-      v-if="dark"
+      v-if="isDarkTheme"
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6"
       viewBox="0 0 20 20"
@@ -32,18 +32,42 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
-
+import { mapMutations } from 'vuex'
 export default {
-  computed: {
-    ...mapGetters(['dark'])
+  data() {
+    return {
+      isDarkTheme: false
+    }
   },
-
+  mounted() {
+    this.isDarkTheme = localStorage.getItem('isDarkTheme')
+    if (this.isDarkTheme === null || this.isDarkTheme === 'false') {
+      this.setLightTheme()
+    } else if (this.isDarkTheme === 'true') {
+      this.setDarkTheme()
+    }
+  },
   methods: {
-    ...mapMutations(['SET_DARK']),
-
-    toggleDarkMode() {
-      this.SET_DARK(!this.dark)
+    ...mapMutations({
+      setDarkToStore: 'setDarkTheme',
+      setLightToStore: 'setLightTheme'
+    }),
+    toggleTheme() {
+      if (this.isDarkTheme) {
+        this.setLightTheme()
+      } else {
+        this.setDarkTheme()
+      }
+    },
+    setDarkTheme() {
+      this.isDarkTheme = true
+      this.$store.commit('theme/setDarkTheme')
+      localStorage.setItem('isDarkTheme', true)
+    },
+    setLightTheme() {
+      this.isDarkTheme = false
+      this.$store.commit('theme/setLightTheme')
+      localStorage.setItem('isDarkTheme', false)
     }
   }
 }

@@ -7,7 +7,10 @@ export const getters = {
 };
 
 export const mutations = {
-  SET_DARK: (state, bool) => {
-    state.dark = bool;
+  setDarkTheme: (state) => {
+    state.dark = true;
+  },
+  setLightTheme: (state) => {
+    state.dark = false;
   }
 };
