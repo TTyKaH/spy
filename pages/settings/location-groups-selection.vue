@@ -13,7 +13,10 @@
     </div>
     <div class="grid gap-5">
       <div class="line"></div>
-      <button class="mt-5" :disabled="!isCheckedGroups" @click="setRandomLocation(), saveSelectedGroups()">
+      <button class="btn w-full block" @click="checkAllGroups()">
+        Все локации
+      </button>
+      <button :disabled="!isCheckedGroups" @click="setRandomLocation(), saveSelectedGroups()">
         <NuxtLink v-if="isCheckedGroups" class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
         <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
       </button>
@@ -72,6 +75,16 @@ export default {
     toggleCheckbox(idx) {
       // TODO: возможно класс уже не нужен
       this.$refs.groups[idx].classList.toggle('chosen')
+    },
+    checkAllGroups() {
+      if (this.locations.length !== this.selectedGroups.length) {
+        this.selectedGroups = []
+        for (const group of this.locations) {
+          this.selectedGroups.push(group.groupName)
+        }
+      } else {
+        this.selectedGroups = []
+      }
     },
     setRandomLocation() {
       this.formArraylocations()
