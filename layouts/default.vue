@@ -12,7 +12,14 @@ export default {
   components: [Placeholder],
   computed: {
     isDarkTheme() {
-      return this.$store.getters['theme/dark']
+      // Это костыль, так как themefromStore нужен только для придания реактивности вычисляемому свойству
+      const themefromStore = this.$store.getters['theme/dark']
+      const themeFromLocalStorage = localStorage.getItem('isDarkTheme')
+      if (themeFromLocalStorage === 'true' || themefromStore === true) {
+        return true
+      } else {
+        return false
+      }
     }
   }
 }
