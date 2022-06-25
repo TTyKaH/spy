@@ -13,7 +13,7 @@
     </div>
     <div class="grid gap-5">
       <div class="line"></div>
-      <button class="mt-5" :disabled="!isCheckedGroups" @click="setRandomLocation()">
+      <button class="mt-5" :disabled="!isCheckedGroups" @click="setRandomLocation(), saveSelectedGroups()">
         <NuxtLink v-if="isCheckedGroups" class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
         <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
       </button>
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       selectedGroups: [],
+      earlySelectedGroups: [],
       selectedLocations: []
     }
   },
@@ -41,6 +42,15 @@ export default {
     },
     isCheckedGroups() {
       return this.selectedGroups.length !== 0
+    }
+  },
+  mounted() {
+    this.earlySelectedGroups = JSON.parse(
+      localStorage.getItem('selectedGroups')
+    )
+    console.log(this.earlySelectedGroups)
+    if (this.earlySelectedGroups.length !== 0) {
+      this.selectedGroups = this.earlySelectedGroups
     }
   },
   methods: {
@@ -68,6 +78,12 @@ export default {
       const locationIdx = this.getRandomNumber(this.selectedLocations.length)
       const selectedLocation = this.selectedLocations[locationIdx]
       localStorage.setItem('selectedLocation', selectedLocation)
+    },
+    saveSelectedGroups() {
+      localStorage.setItem(
+        'selectedGroups',
+        JSON.stringify(this.selectedGroups)
+      )
     },
     formArraylocations() {
       for (const group of this.selectedGroups) {
