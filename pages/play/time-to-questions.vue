@@ -26,7 +26,10 @@ export default {
     title: 'spy - time to questions'
   },
   mounted() {
-    if (localStorage.getItem('isGameOn') === null) {
+    if (
+      localStorage.getItem('isGameOn') === null ||
+      localStorage.getItem('isGameOn') === 'false'
+    ) {
       localStorage.setItem('isGameOn', true)
       const playersCount = Number(localStorage.getItem('playersCount'))
       this.whoFirstAsk = this.getRandomNumber(playersCount)
