@@ -13,9 +13,14 @@
     </div>
     <div class="grid gap-5">
       <div class="line"></div>
-      <button class="btn w-full block" @click="checkAllGroups()">
-        Все локации
-      </button>
+      <div class="grid grid-cols-2 gap-5">
+        <button class="btn w-full block" @click="checkRandomGroups()">
+          Рандом
+        </button>
+        <button class="btn w-full block" @click="checkAllGroups()">
+          Все
+        </button>
+      </div>
       <button :disabled="!isCheckedGroups" @click="setRandomLocation(), saveSelectedGroups()">
         <NuxtLink v-if="isCheckedGroups" class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
         <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
@@ -48,10 +53,9 @@ export default {
     }
   },
   mounted() {
-    this.earlySelectedGroups = JSON.parse(
-      localStorage.getItem('selectedGroups')
-    )
-    console.log(this.earlySelectedGroups)
+    this.earlySelectedGroups =
+      JSON.parse(localStorage.getItem('selectedGroups')) || []
+    // console.log(this.earlySelectedGroups)
     if (this.earlySelectedGroups.length !== 0) {
       this.selectedGroups = this.earlySelectedGroups
     }
@@ -75,6 +79,31 @@ export default {
     toggleCheckbox(idx) {
       // TODO: возможно класс уже не нужен
       this.$refs.groups[idx].classList.toggle('chosen')
+    },
+    checkRandomGroups() {
+      const groupsAmount = this.locations.length
+      let randomGroupsAmount = 0
+      do {
+        randomGroupsAmount = this.getRandomNumber(groupsAmount) + 1
+      } while (randomGroupsAmount < 2 || randomGroupsAmount > groupsAmount - 2)
+      console.log('randomGroupsAmount', randomGroupsAmount)
+      const randomGroups = []
+      let currentIdx = null
+      const prevIdxs = []
+      let wasPushed
+      do {
+        wasPushed = false
+        do {
+          currentIdx = this.getRandomNumber(groupsAmount)
+          if (!prevIdxs.includes(currentIdx)) {
+            prevIdxs.push(currentIdx)
+            wasPushed = true
+          }
+        } while (!wasPushed)
+        randomGroups.push(this.locations[currentIdx].groupName)
+      } while (randomGroups.length < randomGroupsAmount)
+      this.selectedGroups = []
+      this.selectedGroups = [...randomGroups]
     },
     checkAllGroups() {
       if (this.locations.length !== this.selectedGroups.length) {
