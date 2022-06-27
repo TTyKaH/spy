@@ -14,21 +14,36 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      count: null,
+      count: null
+    }
+  },
+  computed: {
+    timeCountFromStore() {
+      return this.$store.getters['settings/getTimeCount']
     }
   },
   mounted() {
-    this.count = Number(localStorage.timeCount)
+    const timeCountFromLocalStore = JSON.parse(
+      localStorage.getItem('timeCount')
+    )
+    if (timeCountFromLocalStore === null) {
+      this.count = this.timeCountFromStore
+      localStorage.setItem('timeCount', this.count)
+    } else {
+      this.count = timeCountFromLocalStore
+      this.$store.commit('settings/setTimeCount', this.count)
+    }
   },
   methods: {
     increase() {
       this.count = this.count + 1
       localStorage.setItem('timeCount', this.count)
+      this.$store.commit('settings/setTimeCount', this.count)
     },
     decrease() {
       if (this.count === 5) {
@@ -36,7 +51,8 @@ export default {
       }
       this.count = this.count - 1
       localStorage.setItem('timeCount', this.count)
-    },
-  },
+      this.$store.commit('settings/setTimeCount', this.count)
+    }
+  }
 }
 </script>

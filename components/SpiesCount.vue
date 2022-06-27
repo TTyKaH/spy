@@ -14,16 +14,30 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       count: null
     }
   },
+  computed: {
+    spiesCountFromStore() {
+      return this.$store.getters['settings/getSpiesCount']
+    }
+  },
   mounted() {
-    this.count = Number(localStorage.getItem('spiesCount'))
+    const spiesCountFromLocalStore = JSON.parse(
+      localStorage.getItem('spiesCount')
+    )
+    if (spiesCountFromLocalStore === null) {
+      this.count = this.spiesCountFromStore
+      localStorage.setItem('spiesCount', this.count)
+    } else {
+      this.count = spiesCountFromLocalStore
+      this.$store.commit('settings/setSpiesCount', this.count)
+    }
   },
   methods: {
     increase() {
@@ -31,6 +45,7 @@ export default {
       if (playersCount - this.count > 2) {
         this.count = this.count + 1
         localStorage.setItem('spiesCount', this.count)
+        this.$store.commit('settings/setSpiesCount', this.count)
       }
     },
     decrease() {
@@ -39,7 +54,8 @@ export default {
       }
       this.count = this.count - 1
       localStorage.setItem('spiesCount', this.count)
-    },
-  },
+      this.$store.commit('settings/setSpiesCount', this.count)
+    }
+  }
 }
 </script>

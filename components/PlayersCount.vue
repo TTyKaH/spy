@@ -14,21 +14,36 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      count: null,
+      count: null
+    }
+  },
+  computed: {
+    playersCountFromStore() {
+      return this.$store.getters['settings/getPlayersCount']
     }
   },
   mounted() {
-    this.count = Number(localStorage.playersCount)
+    const playersCountFromLocalStore = JSON.parse(
+      localStorage.getItem('playersCount')
+    )
+    if (playersCountFromLocalStore === null) {
+      this.count = this.playersCountFromStore
+      localStorage.setItem('playersCount', this.count)
+    } else {
+      this.count = playersCountFromLocalStore
+      this.$store.commit('settings/setPlayersCount', this.count)
+    }
   },
   methods: {
     increase() {
       this.count = this.count + 1
       localStorage.setItem('playersCount', this.count)
+      this.$store.commit('settings/setPlayersCount', this.count)
     },
     decrease() {
       if (this.count === 3) {
@@ -36,8 +51,9 @@ export default {
       }
       this.count = this.count - 1
       localStorage.setItem('playersCount', this.count)
-    },
-  },
+      this.$store.commit('settings/setPlayersCount', this.count)
+    }
+  }
 }
 </script>
 
