@@ -25,6 +25,18 @@ export default {
   computed: {
     spiesCountFromStore() {
       return this.$store.getters['settings/getSpiesCount']
+    },
+    playersCountFromStore() {
+      return this.$store.getters['settings/getPlayersCount']
+    }
+  },
+  watch: {
+    playersCountFromStore(newValue, oldValue) {
+      if (this.playersCountFromStore - this.count < 2) {
+        this.count = this.playersCountFromStore - 2
+        localStorage.setItem('spiesCount', this.count)
+        this.$store.commit('settings/setSpiesCount', this.count)
+      }
     }
   },
   mounted() {
