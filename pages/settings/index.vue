@@ -22,6 +22,7 @@ export default {
   beforeMount() {
     const playersCount = localStorage.getItem('playersCount')
     localStorage.setItem('isGameOn', false)
+    localStorage.removeItem('whoSpies')
     if (playersCount === null) {
       localStorage.setItem('playersCount', 3)
       localStorage.setItem('spiesCount', 1)
