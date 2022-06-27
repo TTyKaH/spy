@@ -10,6 +10,17 @@
 import Placeholder from '~/components/Placeholder.vue'
 export default {
   components: [Placeholder],
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'theme-color',
+          name: 'theme-color',
+          content: this.isDarkTheme ? '#0f172a' : '#fcfcfc'
+        }
+      ]
+    }
+  },
   computed: {
     isDarkTheme() {
       // Это костыль, так как themefromStore нужен только для придания реактивности вычисляемому свойству
