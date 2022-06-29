@@ -1,13 +1,13 @@
 <template>
   <section id="rules">
-    <div class="wrap wrap-py flex flex-col justify-between">
+    <div class="wrap wrap-py flex flex-col relative">
       <div class="line"></div>
       <div class="overflow-scroll py-5">
         <div v-for="(rule, idx) in rules" :key="idx">
           <div v-if="idx === current" class="rule text-center grid gap-10">
             <img src="@/assets/images/players.png" class="mx-auto" width="150" alt="">
             <div class="flex flex-col gap-5">
-              <div class="grid gap-3">
+              <div class="grid gap-4">
                 <div class="circles flex justify-center gap-2 mb-3">
                   <div
                     v-for="(circle, circleIdx) in rules" :key="circleIdx"
@@ -24,7 +24,7 @@
         </div>
       </div>
       <!-- <div class="flex justify-center gap-20 py-7 absolute"> -->
-      <div class="grid gap-5">
+      <div class="grid gap-5 absolute">
         <div class="line"></div>
         <div class="flex justify-center gap-20">
           <button class="btn btn-without-p-correction" @click="prev()">
@@ -76,6 +76,9 @@ export default {
 
 <style lang="scss">
 #rules {
+  .wrap-py {
+    padding-bottom: 99px;
+  }
   .circles {
     .circle {
       width: 15px;
@@ -91,10 +94,19 @@ export default {
   }
 
   h3 {
-    font-size: 19px;
+    text-transform: none;
+    font-weight: 700;
+    font-size: 20px;
   }
   p {
-    font-size: 18px;
+    font-size: 20px;
+  }
+
+  .absolute {
+    background-color: var(--bg-color-main);
+    bottom: 28px;
+    right: 16px;
+    left: 16px;
   }
 }
 </style>
