@@ -79,6 +79,8 @@ export default {
     },
     stopTimer() {
       clearInterval(this.timer)
+      this.win('Шпионы')
+      this.$router.push('/win')
     },
     win(who) {
       localStorage.setItem('whoWin', who)
