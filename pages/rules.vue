@@ -1,6 +1,6 @@
 <template>
   <section id="rules">
-    <div class="wrap wrap-py rules-box flex flex-col relative">
+    <div class="wrap wrap-py flex flex-col justify-between">
       <div class="line"></div>
       <div class="overflow-scroll py-5">
         <div v-for="(rule, idx) in rules" :key="idx">
@@ -24,7 +24,7 @@
         </div>
       </div>
       <!-- <div class="flex justify-center gap-20 py-7 absolute"> -->
-      <div class="grid gap-5 pb-5 absolute">
+      <div class="grid gap-5">
         <div class="line"></div>
         <div class="flex justify-center gap-20">
           <button class="btn btn-without-p-correction" @click="prev()">
@@ -76,9 +76,6 @@ export default {
 
 <style lang="scss">
 #rules {
-  .rules-box {
-    padding-bottom: 91px;
-  }
   .circles {
     .circle {
       width: 15px;
@@ -98,13 +95,6 @@ export default {
   }
   p {
     font-size: 18px;
-  }
-
-  .absolute {
-    background-color: var(--bg-color-main);
-    bottom: 0;
-    right: 16px;
-    left: 16px;
   }
 }
 </style>
