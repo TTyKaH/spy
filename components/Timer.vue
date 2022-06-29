@@ -74,13 +74,13 @@ export default {
           this.time.seconds = '0' + (this.time.seconds - 1)
         } else {
           this.stopTimer()
+          this.win('Шпионы')
+          this.$router.push('/win')
         }
       }, 1000)
     },
     stopTimer() {
       clearInterval(this.timer)
-      this.win('Шпионы')
-      this.$router.push('/win')
     },
     win(who) {
       localStorage.setItem('whoWin', who)
