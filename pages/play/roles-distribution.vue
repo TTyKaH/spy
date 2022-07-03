@@ -67,6 +67,7 @@ export default {
     const storedWhoSpies = JSON.parse(localStorage.getItem('whoSpies'))
     if (storedWhoSpies === null) {
       while (this.whoSpy.length < this.spiesCount) {
+        localStorage.setItem('currentPlayer', 1)
         const spyNum = this.getRandomNumber(this.playersCount)
         if (!this.whoSpy.includes(spyNum)) {
           this.whoSpy.push(spyNum)
