@@ -70,3 +70,11 @@
   width: 100%;
   height: 1px;
 }
+
+.scrollbar {
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}

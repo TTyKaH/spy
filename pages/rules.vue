@@ -2,7 +2,7 @@
   <section id="rules">
     <div class="wrap wrap-py flex flex-col relative">
       <div class="line"></div>
-      <div class="overflow-scroll py-5">
+      <div class="overflow-scroll py-5 scrollbar">
         <div v-for="(rule, idx) in rules" :key="idx">
           <div v-if="idx === current" class="rule text-center grid gap-10">
             <img src="@/assets/images/players.png" class="mx-auto" width="150" alt="">
