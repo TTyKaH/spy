@@ -18,11 +18,11 @@
         </div>
       </div>
       <div class="grid gap-5">
+        <NuxtLink class="btn" to="/">На главную</NuxtLink>
         <!-- <NuxtLink class="btn" to="/play/roles-distribution" @click="prepareLocalStore()">К новым ролям</NuxtLink> -->
         <NuxtLink class="btn" to="/settings/location-groups-selection" @click="prepareLocalStore()">
           К выбору локаций
         </NuxtLink>
-        <NuxtLink class="btn" to="/">На главную</NuxtLink>
       </div>
     </div>
   </section>

@@ -87,6 +87,8 @@ export default {
       localStorage.setItem('isGameOn', false)
       localStorage.removeItem('leftMinutes')
       localStorage.removeItem('leftSeconds')
+      localStorage.removeItem('whoSpies')
+      localStorage.setItem('currentPlayer', 1)
     }
   }
 }
