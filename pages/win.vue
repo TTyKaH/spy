@@ -7,7 +7,7 @@
           <img v-else src="@/assets/images/spy.png" width="150" alt="">
         </div>
         <h1 class="mt-10">{{ whoWin }} победили!</h1>
-        <p class="my-5">Локация: {{ location }}</p>
+        <p class="my-5">Локация: <br> {{ location }}</p>
         <div class="grid gap-3 justify-items-center">
           <p>Игроки-шпионы:</p>
           <div class="spies flex gap-2 justify-center flex-wrap">
@@ -17,7 +17,13 @@
           </div>
         </div>
       </div>
-      <NuxtLink class="btn" to="/">На главную</NuxtLink>
+      <div class="grid gap-5">
+        <!-- <NuxtLink class="btn" to="/play/roles-distribution" @click="prepareLocalStore()">К новым ролям</NuxtLink> -->
+        <NuxtLink class="btn" to="/settings/location-groups-selection" @click="prepareLocalStore()">
+          К выбору локаций
+        </NuxtLink>
+        <NuxtLink class="btn" to="/">На главную</NuxtLink>
+      </div>
     </div>
   </section>
 </template>
@@ -36,6 +42,12 @@ export default {
     this.whoWin = localStorage.getItem('whoWin')
     this.location = localStorage.getItem('selectedLocation')
     this.whoSpies = JSON.parse(localStorage.getItem('whoSpies')).sort()
+  },
+  methods: {
+    prepareLocalStore() {
+      localStorage.removeItem('whoSpies')
+      localStorage.removeItem('currentPlayer')
+    }
   }
 }
 </script>
