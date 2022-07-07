@@ -17,10 +17,10 @@
           </div>
         </div>
       </div>
-      <div class="grid gap-5">
+      <div class="grid gap-5" @click="prepareLocalStore">
         <NuxtLink class="btn" to="/">На главную</NuxtLink>
         <!-- <NuxtLink class="btn" to="/play/roles-distribution" @click="prepareLocalStore()">К новым ролям</NuxtLink> -->
-        <NuxtLink class="btn" to="/settings/location-groups-selection" @click="prepareLocalStore()">
+        <NuxtLink class="btn" to="/settings/location-groups-selection">
           К выбору локаций
         </NuxtLink>
       </div>
@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     prepareLocalStore() {
+      console.log('отработал метод')
       localStorage.removeItem('whoSpies')
       localStorage.removeItem('currentPlayer')
     }

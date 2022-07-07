@@ -85,10 +85,9 @@ export default {
     win(who) {
       localStorage.setItem('whoWin', who)
       localStorage.setItem('isGameOn', false)
+      localStorage.setItem('currentPlayer', 1)
       localStorage.removeItem('leftMinutes')
       localStorage.removeItem('leftSeconds')
-      localStorage.removeItem('whoSpies')
-      localStorage.setItem('currentPlayer', 1)
     }
   }
 }
