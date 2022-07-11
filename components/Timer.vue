@@ -88,6 +88,7 @@ export default {
       localStorage.setItem('currentPlayer', 1)
       localStorage.removeItem('leftMinutes')
       localStorage.removeItem('leftSeconds')
+      localStorage.removeItem('selectedLocation')
     }
   }
 }

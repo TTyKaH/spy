@@ -8,9 +8,9 @@
         <TimeCount title="Время:" />
       </div>
     </div>
-    <NuxtLink to="/settings/location-groups-selection" class="btn">
+    <ButtonWithLink to="/settings/location-groups-selection" :handler="prepare">
       Дальше
-    </NuxtLink>
+    </ButtonWithLink>
   </div>
 </template>
 
@@ -27,6 +27,11 @@ export default {
       localStorage.setItem('playersCount', 3)
       localStorage.setItem('spiesCount', 1)
       localStorage.setItem('timeCount', 10)
+    }
+  },
+  methods: {
+    prepare() {
+      localStorage.removeItem('selectedLocation')
     }
   }
 }
