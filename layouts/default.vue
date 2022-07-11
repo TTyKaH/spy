@@ -7,9 +7,7 @@
 </template>
 
 <script>
-import Placeholder from '~/components/Placeholder.vue'
 export default {
-  components: [Placeholder],
   head() {
     return {
       meta: [
