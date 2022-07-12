@@ -22,12 +22,9 @@
         </button>
       </div>
       <button :disabled="!isCheckedGroups" @click="setRandomLocation(), saveSelectedGroups()">
-        <NuxtLink v-if="isCheckedGroups" class="btn w-full block" to="/play/roles-distribution">Начать игру</NuxtLink>
+        <ButtonWithLink v-if="isCheckedGroups" to="/play/roles-distribution" full>Начать игру</ButtonWithLink>
         <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
       </button>
-      <!-- <button :disabled="!isCheckedGroups" @click="setRandomLocation()">
-        <NuxtLink class="btn w-full block" to="#">Все локации</NuxtLink>
-      </button> -->
     </div>
   </div>
 </template>

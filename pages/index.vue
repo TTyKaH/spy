@@ -6,10 +6,10 @@
       <img src="@/static/favicon.png" alt="" width="100px">
     </div>
     <div class="grid gap-5">
-      <NuxtLink to="/settings" class="btn">Начать</NuxtLink>
-      <button v-if="!canResume" class="btn btn-disabled">Продолжить</button>
-      <NuxtLink v-else to="/play/time-to-questions" class="btn">Продолжить</NuxtLink>
-      <NuxtLink to="/rules" class="btn">Правила</NuxtLink>
+      <ButtonWithLink to="/settings">Начать</ButtonWithLink>
+      <ButtonWithLink v-if="!canResume" :disabled="true">Продолжить</ButtonWithLink>
+      <ButtonWithLink v-else to="/play/time-to-questions">Продолжить</ButtonWithLink>
+      <ButtonWithLink to="/rules">Правила</ButtonWithLink>
     </div>
   </div>
 </template>

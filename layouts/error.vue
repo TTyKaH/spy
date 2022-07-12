@@ -241,7 +241,7 @@
           class="cls-15"
           d="M857.63,805C860.5,803.5,830.5,512.5,746.5,400.5s-104-130-104-130-2,85,34,145,78,160,90,182,56,223,56,223Z" />
       </svg>
-      <NuxtLink class="btn" to="/">На главную</NuxtLink>
+      <ButtonWithLink to="/">На главную</ButtonWithLink>
     </div>
   </div>
 </template>

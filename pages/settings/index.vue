@@ -8,9 +8,7 @@
         <TimeCount title="Время:" />
       </div>
     </div>
-    <ButtonWithLink to="/settings/location-groups-selection" :handler="prepare">
-      Дальше
-    </ButtonWithLink>
+    <ButtonWithLink to="/settings/location-groups-selection" :handler="prepare">Дальше</ButtonWithLink>
   </div>
 </template>
 

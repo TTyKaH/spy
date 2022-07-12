@@ -11,8 +11,8 @@
       </div>
     </button>
     <div v-if="isPause && isStarted" class="grid gap-5 absolute bottom-0 right-0 left-0">
-      <NuxtLink to="/win" class="btn" @click.native="win('Местные')">Местные победили</NuxtLink>
-      <NuxtLink to="/win" class="btn" @click.native="win('Шпионы')">Шпионы победили</NuxtLink>
+      <ButtonWithLink to="/win" @click.native="win('Местные')">Местные победили</ButtonWithLink>
+      <ButtonWithLink to="/win" @click.native="win('Шпионы')">Шпионы победили</ButtonWithLink>
     </div>
   </div>
 </template>

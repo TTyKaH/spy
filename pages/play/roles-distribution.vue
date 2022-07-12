@@ -37,7 +37,7 @@
       <button v-if="isFirstStage" class="btn" @click="toggle()">Хто я</button>
       <div v-else class="grid">
         <button v-if="currentPlayer !== playersCount" class="btn" @click="nextPlayer()">Понятно</button>
-        <NuxtLink v-else to="/play/time-to-questions" class="btn">Понятно</NuxtLink>
+        <ButtonWithLink v-else to="/play/time-to-questions">Понятно</ButtonWithLink>
       </div>
     </div>
   </div>

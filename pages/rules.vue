@@ -16,14 +16,11 @@
                 <h3>{{ rule.title }}</h3>
                 <p>{{ rule.text }}</p>
               </div>
-              <button v-if="current === rules.length - 1">
-                <NuxtLink class="btn w-full block" to="/">На главную</NuxtLink>
-              </button>
+              <ButtonWithLink v-if="current === rules.length - 1" to="/">На главную</ButtonWithLink>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="flex justify-center gap-20 py-7 absolute"> -->
       <div class="grid gap-5 absolute">
         <div class="line"></div>
         <div class="flex justify-center gap-20">
