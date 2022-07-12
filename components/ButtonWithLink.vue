@@ -1,6 +1,6 @@
 <template>
-  <button @click="handler">
-    <NuxtLink :to="to" class="btn block w-full">
+  <button :class="{'w-full': full}" @click="handler">
+    <NuxtLink :to="to" class="btn block w-full" :class="{'btn-disabled': disabled}">
       <slot></slot>
     </NuxtLink>
   </button>
@@ -16,6 +16,14 @@ export default {
     handler: {
       type: Function,
       default: () => {}
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    full: {
+      type: Boolean,
+      default: false
     }
   }
 }
