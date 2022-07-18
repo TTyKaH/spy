@@ -36,8 +36,14 @@
     <div class="grid">
       <button v-if="isFirstStage" class="btn" @click="toggle()">Хто я</button>
       <div v-else class="grid">
-        <button v-if="currentPlayer !== playersCount" class="btn" @click="nextPlayer()">Понятно</button>
-        <ButtonWithLink v-else to="/play/time-to-questions">Понятно</ButtonWithLink>
+        <button
+          v-if="isWaiting" class="btn" :class="{'btn-disabled': isWaiting}">Понятно</button>
+        <button
+          v-else-if="currentPlayer !== playersCount" class="btn"
+          @click="nextPlayer()">Понятно</button>
+        <ButtonWithLink v-else :disabled="isWaiting" to="/play/time-to-questions">
+          Понятно
+        </ButtonWithLink>
       </div>
     </div>
   </div>
@@ -52,11 +58,22 @@ export default {
       selectedLocation: null,
       whoSpy: [],
       currentPlayer: 1,
-      isFirstStage: true
+      isFirstStage: true,
+      isWaiting: false
     }
   },
   head: {
     title: 'spy - role distribution'
+  },
+  watch: {
+    isFirstStage(newV, oldV) {
+      if (newV === false) {
+        this.isWaiting = true
+        setTimeout(() => {
+          this.isWaiting = false
+        }, 750)
+      }
+    }
   },
   beforeMount() {
     this.playersCount = Number(localStorage.getItem('playersCount'))
