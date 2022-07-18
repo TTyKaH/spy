@@ -8,7 +8,8 @@
         </div>
         Первым задает вопрос Игрок {{ whoFirstAsk }}
       </div>
-      <button class="btn" @click="toggle()">К таймеру</button>
+      <button v-if="isWaiting" class="btn" :class="{'btn-disabled': isWaiting}">К таймеру</button>
+      <button v-else class="btn" @click="toggle()">К таймеру</button>
     </div>
     <Timer v-else />
   </div>
@@ -19,7 +20,8 @@ export default {
   data() {
     return {
       whoFirstAsk: null,
-      isWhoFirstStage: true
+      isWhoFirstStage: true,
+      isWaiting: true
     }
   },
   head: {
@@ -36,6 +38,9 @@ export default {
     } else {
       this.isWhoFirstStage = false
     }
+    setTimeout(() => {
+      this.isWaiting = false
+    }, 1000)
   },
   methods: {
     getRandomNumber(maxNum) {
