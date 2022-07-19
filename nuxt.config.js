@@ -69,4 +69,5 @@ export default {
   generate: {
     fallback: '404.html'
   },
+  srcDir: 'src/'
 }
