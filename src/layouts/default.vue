@@ -2,7 +2,9 @@
   <div
     id="app"
     :class="isDarkTheme ? 'dark-theme' : 'light-theme'">
-    <Nuxt />
+    <transition name="default">
+      <Nuxt />
+    </transition>
   </div>
 </template>
 
