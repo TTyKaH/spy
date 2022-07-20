@@ -1,46 +1,53 @@
 <template>
   <div id="roles-distribution" class="wrap wrap-py flex flex-col justify-between">
-    <div>
-      <div v-for="playerNum in playersCount" :key="playerNum" class="text-center">
+    <div class="relative">
+      <div v-for="playerNum in playersCount" :key="playerNum" class="text-center top-0">
         <div v-if="currentPlayer === playerNum">
-          <div v-if="isFirstStage" class="flex flex-col justify-between h-auto">
-            <div class="grid justify-items-center gap-5">
-              <div>Игрок {{ playerNum }}</div>
-              <div>
-                Нажмите, чтобы узнать кто ты в этой игре
+
+          <transition name="role" mode="out-in">
+            <div v-if="isFirstStage" key="1" class="flex flex-col justify-between h-auto">
+              <div class="grid justify-items-center gap-5">
+                <div>Игрок {{ playerNum }}</div>
+                <div>
+                  Нажмите, чтобы узнать кто ты в этой игре
+                </div>
               </div>
             </div>
-          </div>
-          <div v-else class="grid gap-5 justify-items-center">
-            <div class="flex flex-col items-center">
-              <img v-if="checkRole(playerNum) === 'Местный'" src="@/assets/images/local.png" width="150px" alt="">
-              <img v-else src="@/assets/images/spy.png" width="150px" alt="">
-              <div class="mt-10">Игрок {{ playerNum }}, ты:</div>
-              <div class="font-black">{{ checkRole(playerNum) }}</div>
+            <div v-else key="2" class="grid gap-5 justify-items-center">
+              <div class="flex flex-col items-center">
+                <img v-if="checkRole(playerNum) === 'Местный'" src="@/assets/images/local.png" width="150px" alt="">
+                <img v-else src="@/assets/images/spy.png" width="150px" alt="">
+                <div class="mt-10">Игрок {{ playerNum }}, ты:</div>
+                <div class="font-black">{{ checkRole(playerNum) }}</div>
+              </div>
+              <div v-if="checkRole(playerNum) === 'Местный'">
+                Локация:
+                <br>
+                <span class="font-black">
+                  {{ selectedLocation }}
+                </span>
+              </div>
+              <div v-else>
+                Все кроме ТЕБЯ знают локацию.
+                Старайся не выдать себя и понять о какой локации все говорят!
+              </div>
             </div>
-            <div v-if="checkRole(playerNum) === 'Местный'">
-              Локация:
-              <br>
-              <span class="font-black">
-                {{ selectedLocation }}
-              </span>
-            </div>
-            <div v-else>
-              Все кроме ТЕБЯ знают локацию.
-              Старайся не выдать себя и понять о какой локации все говорят!
-            </div>
-          </div>
+          </transition>
+
         </div>
       </div>
     </div>
     <div class="grid">
       <button v-if="isFirstStage" class="btn" @click="toggle()">Хто я</button>
       <div v-else class="grid">
-        <button
-          v-if="isWaiting" class="btn" :class="{'btn-disabled': isWaiting}">Понятно</button>
+        <button v-if="isWaiting" class="btn" :class="{'btn-disabled': isWaiting}">
+          Понятно
+        </button>
         <button
           v-else-if="currentPlayer !== playersCount" class="btn"
-          @click="nextPlayer()">Понятно</button>
+          @click="nextPlayer()">
+          Понятно
+        </button>
         <ButtonWithLink v-else :disabled="isWaiting" to="/play/time-to-questions">
           Понятно
         </ButtonWithLink>

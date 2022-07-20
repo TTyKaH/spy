@@ -7,3 +7,15 @@
  .default-leave-active {
    opacity: 0;
  }
+
+ // =====
+
+ .role-enter-active,
+ .role-leave-active {
+   transition: opacity .5s;
+ }
+
+ .role-enter,
+ .role-leave-active {
+   opacity: 0;
+ }
