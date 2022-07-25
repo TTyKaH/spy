@@ -1,10 +1,9 @@
 <template>
   <div id="roles-distribution" class="wrap wrap-py flex flex-col justify-between">
-    <div class="relative">
-      <div v-for="playerNum in playersCount" :key="playerNum" class="text-center top-0">
-        <div v-if="currentPlayer === playerNum">
-
-          <transition name="role" mode="out-in">
+    <div class="overflow-hidden">
+      <div id="slider" class="flex" :style="{width: sliderWidth + 'px'}">
+        <template v-for="playerNum in playersCount">
+          <div :key="playerNum" class="text-center top-0">
             <div v-if="isFirstStage" key="1" class="flex flex-col justify-between h-auto">
               <div class="grid justify-items-center gap-5">
                 <div>Игрок {{ playerNum }}</div>
@@ -32,12 +31,11 @@
                 Старайся не выдать себя и понять о какой локации все говорят!
               </div>
             </div>
-          </transition>
-
-        </div>
+          </div>
+        </template>
       </div>
     </div>
-    <div class="grid">
+    <!-- <div class="grid">
       <button v-if="isFirstStage" class="btn" @click="toggle()">Хто я</button>
       <div v-else class="grid">
         <button v-if="isWaiting" class="btn" :class="{'btn-disabled': isWaiting}">
@@ -52,8 +50,9 @@
           Понятно
         </ButtonWithLink>
       </div>
-    </div>
+    </div> -->
   </div>
+
 </template>
 
 <script>
@@ -66,7 +65,9 @@ export default {
       whoSpy: [],
       currentPlayer: 1,
       isFirstStage: true,
-      isWaiting: false
+      isWaiting: false,
+      // =====
+      sliderWidth: null
     }
   },
   head: {
@@ -102,6 +103,8 @@ export default {
       this.whoSpy = storedWhoSpies
       this.currentPlayer = JSON.parse(localStorage.getItem('currentPlayer'))
     }
+
+    this.setWidthForSlide()
   },
   methods: {
     checkRole(idx) {
@@ -122,6 +125,11 @@ export default {
     },
     getRandomNumber(maxNum) {
       return Math.floor(1 + Math.random() * maxNum)
+    },
+    setWidthForSlide() {
+      const containerWidth =
+        document.getElementById('roles-distribution').offsetWidth - 32
+      this.sliderWidth = containerWidth * this.playersCount
     }
   }
 }
