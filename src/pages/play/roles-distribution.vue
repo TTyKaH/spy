@@ -1,41 +1,45 @@
 <template>
   <div id="roles-distribution" class="wrap wrap-py flex flex-col justify-between">
     <div class="overflow-hidden">
-      <div id="slider" class="flex" :style="{width: sliderWidth + 'px'}">
+      <div
+        id="slider" class="flex"
+        :style="{width: sliderWidth + 'px', 'margin-left': (-1) * (currentPlayer - 1) * slideWidth + 'px'}">
         <template v-for="playerNum in playersCount">
-          <div :key="playerNum" class="text-center top-0">
-            <div v-if="isFirstStage" key="1" class="flex flex-col justify-between h-auto">
-              <div class="grid justify-items-center gap-5">
-                <div>Игрок {{ playerNum }}</div>
-                <div>
-                  Нажмите, чтобы узнать кто ты в этой игре
+          <div :key="playerNum" class="text-center top-0" :style="{width: slideWidth + 'px'}">
+            <transition name="role" mode="out-in">
+              <div v-if="isFirstStage" key="1" class="flex flex-col justify-between h-auto">
+                <div class="grid justify-items-center gap-5">
+                  <div>Игрок {{ playerNum }}</div>
+                  <div>
+                    Нажмите, чтобы узнать кто ты в этой игре
+                  </div>
                 </div>
               </div>
-            </div>
-            <div v-else key="2" class="grid gap-5 justify-items-center">
-              <div class="flex flex-col items-center">
-                <img v-if="checkRole(playerNum) === 'Местный'" src="@/assets/images/local.png" width="150px" alt="">
-                <img v-else src="@/assets/images/spy.png" width="150px" alt="">
-                <div class="mt-10">Игрок {{ playerNum }}, ты:</div>
-                <div class="font-black">{{ checkRole(playerNum) }}</div>
+              <div v-else key="2" class="grid gap-5 justify-items-center">
+                <div class="flex flex-col items-center">
+                  <img v-if="checkRole(playerNum) === 'Местный'" src="@/assets/images/local.png" width="150px" alt="">
+                  <img v-else src="@/assets/images/spy.png" width="150px" alt="">
+                  <div class="mt-10">Игрок {{ playerNum }}, ты:</div>
+                  <div class="font-black">{{ checkRole(playerNum) }}</div>
+                </div>
+                <div v-if="checkRole(playerNum) === 'Местный'">
+                  Локация:
+                  <br>
+                  <span class="font-black">
+                    {{ selectedLocation }}
+                  </span>
+                </div>
+                <div v-else>
+                  Все кроме ТЕБЯ знают локацию.
+                  Старайся не выдать себя и понять о какой локации все говорят!
+                </div>
               </div>
-              <div v-if="checkRole(playerNum) === 'Местный'">
-                Локация:
-                <br>
-                <span class="font-black">
-                  {{ selectedLocation }}
-                </span>
-              </div>
-              <div v-else>
-                Все кроме ТЕБЯ знают локацию.
-                Старайся не выдать себя и понять о какой локации все говорят!
-              </div>
-            </div>
+            </transition>
           </div>
         </template>
       </div>
     </div>
-    <!-- <div class="grid">
+    <div class="grid">
       <button v-if="isFirstStage" class="btn" @click="toggle()">Хто я</button>
       <div v-else class="grid">
         <button v-if="isWaiting" class="btn" :class="{'btn-disabled': isWaiting}">
@@ -50,7 +54,7 @@
           Понятно
         </ButtonWithLink>
       </div>
-    </div> -->
+    </div>
   </div>
 
 </template>
@@ -67,6 +71,7 @@ export default {
       isFirstStage: true,
       isWaiting: false,
       // =====
+      slideWidth: null,
       sliderWidth: null
     }
   },
@@ -83,12 +88,12 @@ export default {
       }
     }
   },
-  beforeMount() {
-    this.playersCount = Number(localStorage.getItem('playersCount'))
-    this.selectedLocation = localStorage.getItem('selectedLocation')
-    this.spiesCount = Number(localStorage.getItem('spiesCount'))
-  },
   mounted() {
+    this.playersCount = Number(localStorage.getItem('playersCount'))
+    setTimeout(() => {
+      this.selectedLocation = localStorage.getItem('selectedLocation')
+    }, 200)
+    this.spiesCount = Number(localStorage.getItem('spiesCount'))
     const storedWhoSpies = JSON.parse(localStorage.getItem('whoSpies'))
     if (storedWhoSpies === null) {
       while (this.whoSpy.length < this.spiesCount) {
@@ -127,9 +132,10 @@ export default {
       return Math.floor(1 + Math.random() * maxNum)
     },
     setWidthForSlide() {
-      const containerWidth =
+      const slideWidth =
         document.getElementById('roles-distribution').offsetWidth - 32
-      this.sliderWidth = containerWidth * this.playersCount
+      this.slideWidth = slideWidth
+      this.sliderWidth = slideWidth * this.playersCount
     }
   }
 }

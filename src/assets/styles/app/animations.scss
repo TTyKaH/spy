@@ -10,9 +10,12 @@
 
  // =====
 
- .role-enter-active,
+ .role-enter-active {
+   transition: opacity .2s;
+ }
+
  .role-leave-active {
-   transition: opacity .5s;
+   transition: opacity .05s;
  }
 
  .role-enter,
