@@ -4,8 +4,8 @@
       <div
         id="slider" class="flex"
         :style="{width: sliderWidth + 'px', 'margin-left': (-1) * (currentPlayer - 1) * slideWidth + 'px'}">
-        <template v-for="playerNum in playersCount">
-          <div :key="playerNum" class="text-center top-0" :style="{width: slideWidth + 'px'}">
+        <div v-for="playerNum in playersCount" :key="playerNum">
+          <div class="text-center top-0" :style="{width: slideWidth + 'px'}">
             <transition name="role" mode="out-in">
               <div v-if="isFirstStage" key="1" class="flex flex-col justify-between h-auto">
                 <div class="grid justify-items-center gap-5">
@@ -36,7 +36,7 @@
               </div>
             </transition>
           </div>
-        </template>
+        </div>
       </div>
     </div>
     <div class="grid">
