@@ -1,12 +1,11 @@
 <template>
   <div id="timer" class="flex flex-col justify-center h-full gap-5 text-center relative">
     <div class="text-5xl">{{ time.minutes }}:{{ time.seconds }}</div>
-    <button class="flex justify-center" @click="toggle()">
+    <button class="flex justify-center mb-14" @click="toggle()">
       <div v-if="!isPause" class="btn btn-rounded" @click="stopTimer()">
         <img class="icon icon-xs" src="@/assets/images/icons/icon-pause.svg" alt="" />
       </div>
       <div v-else class="btn btn-rounded" @click="startTimer()">
-        <!-- иконку следует сместить и заменить иконки на svg -->
         <img class="icon icon-xs ml-2" src="@/assets/images/icons/icon-play.svg" alt="" />
       </div>
     </button>
