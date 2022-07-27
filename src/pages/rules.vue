@@ -11,7 +11,7 @@
         </div>
       </div>
       <div
-        id="slider" class="overflow-hidden">
+        id="slider" class="overflow-y-auto overflow-x-hidden">
         <div class="flex" :style="{width: sliderWidth + 'px', 'margin-left': (-1) * current * slideWidth + 'px'}">
           <div v-for="(rule, idx) in rules" :key="idx">
             <!-- v-if="idx === current" -->
@@ -21,7 +21,7 @@
                   <h3>{{ rule.title }}</h3>
                   <p>{{ rule.text }}</p>
                 </div>
-                <ButtonWithLink v-if="current === rules.length - 1" to="/">На главную</ButtonWithLink>
+                <ButtonWithLink v-if="isShowButton" to="/">На главную</ButtonWithLink>
               </div>
             </div>
           </div>
@@ -56,12 +56,25 @@ export default {
     return {
       current: 0,
       rules: [],
+      isShowButton: false,
       slideWidth: null,
       sliderWidth: null
     }
   },
   head: {
     title: 'spy - rules'
+  },
+  watch: {
+    // кастыль для того, чтобы кнопка раньше времени не появлялась
+    current() {
+      if (this.current < this.rules.length - 1) {
+        this.isShowButton = false
+      } else {
+        setTimeout(() => {
+          this.isShowButton = true
+        }, 170)
+      }
+    }
   },
   mounted() {
     this.rules = this.$store.getters['rules/getRules']
