@@ -21,6 +21,15 @@ img {
   filter: var(--filter-img-to-theme)
 }
 
+input {
+  outline: none;
+  border: 1px solid var(--border-main);
+
+  &:focus {
+    box-shadow: 0px 0px 8px 0px var(--shadow-color);
+  }
+}
+
 .disclaimer {
   display: none;
 }
