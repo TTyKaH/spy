@@ -12,8 +12,7 @@
 export default {
   computed: {
     isLogin() {
-      // return this.$store.getters['auth/isLogin']
-      return true
+      return this.$store.getters['auth/isLogin']
     }
   },
   beforeMount() {

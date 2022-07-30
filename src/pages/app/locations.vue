@@ -37,6 +37,16 @@ export default {
       locationName: ''
     }
   },
+  computed: {
+    isLogin() {
+      return this.$store.getters['auth/isLogin']
+    }
+  },
+  beforeMount() {
+    if (!this.isLogin) {
+      this.$router.push('/app')
+    }
+  },
   mounted() {
     this.locationsGroups = this.$store.getters['locations/getLocations']
   },

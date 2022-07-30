@@ -56,7 +56,6 @@ export default {
   },
   watch: {
     locationName() {
-      console.log('сработал вотчер')
       this.setLocationsList(this.locationsGroups)
       this.filterLocations()
       this.sortListByName()
