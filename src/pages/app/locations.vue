@@ -2,7 +2,7 @@
   <div id="locations" class="wrap wrap-py flex flex-col gap-5">
     <div class="flex items-center">
       <input v-model="locationName" type="text" placeholder="название локации">
-      <div class="p-2" @click="toggleListType">
+      <div class="py-2 pl-4 pr-0" @click="toggleListType">
         <svg
           v-if="isShowSimpleList"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
     <div class="overflow-y-auto">
       <ListViewsSimple v-if="isShowSimpleList" :locations-groups="locationsGroups" :location-name="locationName">
       </ListViewsSimple>
-      <ListViewsFolder v-else :locations-groups="locationsGroups"></ListViewsFolder>
+      <ListViewsFolder v-else :locations-groups="locationsGroups" :location-name="locationName"></ListViewsFolder>
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
   name: 'Locations',
   data() {
     return {
-      isShowSimpleList: true,
+      isShowSimpleList: false,
       locationsGroups: [],
       locationName: ''
     }
