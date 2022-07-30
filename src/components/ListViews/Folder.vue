@@ -1,7 +1,7 @@
 <template>
   <div id="folder-view">
     <div>
-      <TransitionGroup v-if="processedList.length" name="default" mode="out-in">
+      <TransitionGroup v-if="!isEmptyLocations" name="default" mode="out-in">
         <div
           v-for="(group, idx) in processedList" :key="idx">
           <template v-if="group.locations.length">
@@ -42,6 +42,16 @@ export default {
   data() {
     return {
       processedList: []
+    }
+  },
+  computed: {
+    isEmptyLocations() {
+      for (const group of this.processedList) {
+        if (group.locations.length !== 0) {
+          return false
+        }
+      }
+      return true
     }
   },
   watch: {
