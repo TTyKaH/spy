@@ -21,6 +21,17 @@ img {
   filter: var(--filter-img-to-theme)
 }
 
+input {
+  @apply w-full px-2 py-1 text-gray-700 rounded;
+
+  outline: none;
+  border: 1px solid var(--border-main);
+
+  &:focus {
+    box-shadow: 0px 0px 8px 0px var(--shadow-color);
+  }
+}
+
 .disclaimer {
   display: none;
 }
