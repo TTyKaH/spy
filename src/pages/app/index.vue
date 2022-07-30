@@ -22,6 +22,11 @@ export default {
       return this.$store.getters['auth/isLogin']
     }
   },
+  beforeMount() {
+    if (this.isLogin) {
+      this.$router.push('/app/navigation')
+    }
+  },
   methods: {
     next() {
       this.$store.commit('auth/login', this.pass)
