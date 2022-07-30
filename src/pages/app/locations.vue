@@ -32,7 +32,7 @@ export default {
   name: 'Locations',
   data() {
     return {
-      isShowSimpleList: false,
+      isShowSimpleList: true,
       locationsGroups: [],
       locationName: ''
     }
