@@ -57,3 +57,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+#locations {
+  * {
+    border-color: var(--border-main);
+  }
+}
+</style>
