@@ -1,9 +1,6 @@
 <template>
   <div id="app" class="wrap wrap-py flex flex-col justify-between">
-    <label class="grid gap-1">
-      password
-      <input id="password" v-model="pass" type="password" />
-    </label>
+    <input id="password" v-model="pass" placeholder="password" type="password" />
     <button class="btn" @click="next()">
       Далее
     </button>
@@ -20,6 +17,12 @@ export default {
   computed: {
     isLogin() {
       return this.$store.getters['auth/isLogin']
+    },
+    encryptedPass() {
+      return this.$store.getters['auth/getEncryptedPass']
+    },
+    key() {
+      return this.$store.getters['auth/getKey']
     }
   },
   beforeMount() {
@@ -29,11 +32,16 @@ export default {
   },
   methods: {
     next() {
-      this.$store.commit('auth/login', this.pass)
+      const decryptedPass = this.$CryptoJS.AES.decrypt(
+        this.encryptedPass,
+        this.key
+      ).toString(this.CryptoJS.enc.Utf8)
+
       const passInput = document.getElementById('password')
-      if (this.isLogin) {
+      if (this.pass === decryptedPass) {
+        this.$store.commit('auth/login')
+        passInput.classList.remove('error-input')
         this.$router.push('/app/navigation')
-        return passInput.classList.remove('error-input')
       }
       passInput.classList.add('error-input')
     }

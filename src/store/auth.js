@@ -1,12 +1,13 @@
 export const state = () => ({
-  password: '5577',
+  password: 'U2FsdGVkX187XwpX+sCp5GwLmRY4Gd33hpBBEeGlJ6s=',
+  key: 'gregor',
   isLogin: false,
 })
 
 
 export const mutations = {
-  login(state, pass) {
-    if (state.password === pass) state.isLogin = true
+  login(state) {
+    state.isLogin = true
   },
   logout(state) {
     state.isLogin = false
@@ -16,5 +17,11 @@ export const mutations = {
 export const getters = {
   isLogin(state) {
     return state.isLogin
-  }
+  },
+  getEncryptedPass(state) {
+    return state.password
+  },
+  getKey(state) {
+    return state.key
+  },
 }
