@@ -1,8 +1,8 @@
 <template>
   <div id="location-groups-selection" class="wrap wrap-py flex flex-col justify-between">
     <div class="grid overflow-hidden">
-      <div class="grid gap-4">
-        <div class="flex justify-center relative">
+      <div class="grid gap-2">
+        <div class="flex relative">
           <NuxtLink to="/settings/locations-list">
             <img class="icon icon-sm absolute right-0 top-0" src="@/assets/images/icons/icon-location.png" alt="" />
           </NuxtLink>
