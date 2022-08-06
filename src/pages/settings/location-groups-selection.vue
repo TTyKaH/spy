@@ -6,7 +6,7 @@
           <NuxtLink to="/settings/locations-list">
             <img class="icon icon-sm absolute right-0 top-0" src="@/assets/images/icons/icon-location.png" alt="" />
           </NuxtLink>
-          <h2 class="pt-1">Выбор локаций</h2>
+          <h2>Выбор локаций</h2>
         </div>
         <div class="line"></div>
       </div>
