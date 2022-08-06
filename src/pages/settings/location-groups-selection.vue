@@ -1,8 +1,13 @@
 <template>
-  <div class="wrap wrap-py flex flex-col justify-between">
+  <div id="location-groups-selection" class="wrap wrap-py flex flex-col justify-between">
     <div class="grid overflow-hidden">
-      <div class="grid gap-7">
-        <h2>Выбор локаций</h2>
+      <div class="grid gap-5">
+        <div class="flex justify-center relative">
+          <NuxtLink to="/settings/locations-list">
+            <img class="icon icon-sm absolute right-0" src="@/assets/images/icons/icon-location.png" alt="" />
+          </NuxtLink>
+          <h2>Выбор локаций</h2>
+        </div>
         <div class="line"></div>
       </div>
       <div class="grid overflow-x-auto scrollbar">
@@ -52,7 +57,6 @@ export default {
   mounted() {
     this.earlySelectedGroups =
       JSON.parse(localStorage.getItem('selectedGroups')) || []
-    // console.log(this.earlySelectedGroups)
     if (this.earlySelectedGroups.length !== 0) {
       this.selectedGroups = this.earlySelectedGroups
     }
@@ -74,7 +78,6 @@ export default {
       this.selectedGroups.splice(idx, 1)
     },
     toggleCheckbox(idx) {
-      // TODO: возможно класс уже не нужен
       this.$refs.groups[idx].classList.toggle('chosen')
     },
     checkRandomGroups() {
@@ -146,15 +149,21 @@ export default {
 </script>
 
 <style lang="scss">
-.chosen {
-  // color: var(--chosen-color);
-}
+#location-groups-selection {
+  h2 {
+    // line-height: 24px;
+  }
+  .icon {
+    top: 4px;
+    z-index: 99;
+  }
 
-.scrollbar {
-  position: relative;
+  .scrollbar {
+    position: relative;
 
-  &::-webkit-scrollbar {
-    width: 0;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
 }
 </style>
