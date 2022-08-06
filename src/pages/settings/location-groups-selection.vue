@@ -154,8 +154,7 @@ export default {
     // line-height: 24px;
   }
   .icon {
-    top: 4px;
-    z-index: 99;
+    top: 3px;
   }
 
   .scrollbar {
