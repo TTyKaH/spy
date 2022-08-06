@@ -1,5 +1,5 @@
 <template>
-  <div id="location-group" class="cursor-pointer py-4">
+  <div id="location-group" class="cursor-pointer py-3">
     <span class="flex justify-between items-center =">
       {{ group.groupName }}
       <Checkbox :is-checked="isChecked"></Checkbox>

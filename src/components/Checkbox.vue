@@ -26,8 +26,8 @@ export default {
 <style lang="scss">
 .checkbox {
   .box {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-radius: 5px;
     border: 1px solid var(--border-checkbox);
     background-color: var(--bg-checkbox);
