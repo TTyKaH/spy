@@ -1,12 +1,12 @@
 <template>
   <div id="location-groups-selection" class="wrap wrap-py flex flex-col justify-between">
     <div class="grid overflow-hidden">
-      <div class="grid gap-5">
+      <div class="grid gap-4">
         <div class="flex justify-center relative">
           <NuxtLink to="/settings/locations-list">
-            <img class="icon icon-sm absolute right-0" src="@/assets/images/icons/icon-location.png" alt="" />
+            <img class="icon icon-sm absolute right-0 top-0" src="@/assets/images/icons/icon-location.png" alt="" />
           </NuxtLink>
-          <h2>Выбор локаций</h2>
+          <h2 class="pt-1">Выбор локаций</h2>
         </div>
         <div class="line"></div>
       </div>
@@ -150,13 +150,6 @@ export default {
 
 <style lang="scss">
 #location-groups-selection {
-  h2 {
-    // line-height: 24px;
-  }
-  .icon {
-    top: 3px;
-  }
-
   .scrollbar {
     position: relative;
 
