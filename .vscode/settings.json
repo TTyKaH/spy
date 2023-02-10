@@ -12,7 +12,7 @@
     "editor.defaultFormatter": "HookyQR.beautify"
   },
   "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": [
@@ -44,6 +44,6 @@
   "scss.validate": false,
   "svg.preview.background": "white",
   "[scss]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "vscode.css-language-features"
   }
 }

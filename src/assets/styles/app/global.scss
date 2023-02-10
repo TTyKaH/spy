@@ -5,6 +5,11 @@
   transition: 0.2s all ease-in-out;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   font-family: 'Comfortaa', cursive;
   font-size: 24px;
@@ -18,7 +23,7 @@ h4 {
 }
 
 img {
-  filter: var(--filter-img-to-theme)
+  filter: var(--filter-img-to-theme);
 }
 
 input {
