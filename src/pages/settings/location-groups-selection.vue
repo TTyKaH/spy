@@ -1,17 +1,29 @@
 <template>
-  <div id="location-groups-selection" class="wrap wrap-py flex flex-col justify-between">
+  <div
+    id="location-groups-selection"
+    class="wrap wrap-py flex flex-col justify-between"
+  >
     <div class="grid overflow-hidden">
       <div class="grid gap-2">
         <div class="flex relative">
           <NuxtLink to="/settings/locations-list">
-            <img class="icon icon-sm absolute right-0 top-0" src="@/assets/images/icons/icon-location.png" alt="" />
+            <img
+              class="icon icon-sm absolute right-0 top-0"
+              src="@/assets/images/icons/icon-location.png"
+              alt=""
+            />
           </NuxtLink>
           <h2>Выбор локаций</h2>
         </div>
         <div class="line"></div>
       </div>
       <div class="grid overflow-x-auto scrollbar">
-        <div v-for="(g, idx) in locations" :key="idx" ref="groups" @click="checkGroup(g.groupName, idx)">
+        <div
+          v-for="(g, idx) in locations"
+          :key="idx"
+          ref="groups"
+          @click="checkGroup(g.groupName, idx)"
+        >
           <LocationGroup :group="g" :selected-groups="selectedGroups" />
         </div>
       </div>
@@ -26,9 +38,22 @@
           Все
         </button>
       </div>
-      <button :disabled="!isCheckedGroups" @click="setRandomLocation(), saveSelectedGroups()">
-        <ButtonWithLink v-if="isCheckedGroups" to="/play/roles-distribution" full>Начать игру</ButtonWithLink>
-        <span v-else class="btn w-full block" :class="{ 'btn-disabled': !isCheckedGroups }">Начать игру</span>
+      <button
+        :disabled="!isCheckedGroups"
+        @click="setRandomLocation(), saveSelectedGroups()"
+      >
+        <ButtonWithLink
+          v-if="isCheckedGroups"
+          to="/play/roles-distribution"
+          full
+          >Начать игру</ButtonWithLink
+        >
+        <span
+          v-else
+          class="btn w-full block"
+          :class="{ 'btn-disabled': !isCheckedGroups }"
+          >Начать игру</span
+        >
       </button>
     </div>
   </div>
@@ -116,10 +141,10 @@ export default {
       }
     },
     setRandomLocation() {
-      const storedSelectedLocation = localStorage.getItem('selectedLocation')
-      if (storedSelectedLocation !== null) {
-        return
-      }
+      // const storedSelectedLocation = localStorage.getItem('selectedLocation')
+      // if (storedSelectedLocation !== null) {
+      //   return
+      // }
       this.formArraylocations()
       const locationIdx = this.getRandomNumber(this.selectedLocations.length)
       const selectedLocation = this.selectedLocations[locationIdx]
