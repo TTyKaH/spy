@@ -30,7 +30,7 @@
   "git.enableSmartCommit": true,
   "git.autofetch": true,
   "[json]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "vetur.grammar.customBlocks": {
     "router": "js"
