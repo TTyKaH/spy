@@ -42,14 +42,13 @@
         :disabled="!isCheckedGroups"
         @click="setRandomLocation(), saveSelectedGroups()"
       >
-        <ButtonWithLink
+        <!-- <ButtonWithLink
           v-if="isCheckedGroups"
           to="/play/roles-distribution"
           full
           >Начать игру</ButtonWithLink
-        >
+        > -->
         <span
-          v-else
           class="btn w-full block"
           :class="{ 'btn-disabled': !isCheckedGroups }"
           >Начать игру</span
@@ -149,6 +148,7 @@ export default {
       const locationIdx = this.getRandomNumber(this.selectedLocations.length)
       const selectedLocation = this.selectedLocations[locationIdx]
       localStorage.setItem('selectedLocation', selectedLocation)
+      this.$router.push({path: '/play/roles-distribution'})
     },
     saveSelectedGroups() {
       localStorage.setItem(
