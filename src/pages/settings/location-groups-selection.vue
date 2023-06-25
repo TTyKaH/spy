@@ -141,10 +141,10 @@ export default {
       }
     },
     setRandomLocation() {
-      // const storedSelectedLocation = localStorage.getItem('selectedLocation')
-      // if (storedSelectedLocation !== null) {
-      //   return
-      // }
+      const storedSelectedLocation = localStorage.getItem('selectedLocation')
+      if (storedSelectedLocation !== null) {
+        return
+      }
       this.formArraylocations()
       const locationIdx = this.getRandomNumber(this.selectedLocations.length)
       const selectedLocation = this.selectedLocations[locationIdx]
