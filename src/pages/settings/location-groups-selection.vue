@@ -24,17 +24,26 @@
           ref="groups"
           @click="checkGroup(g.groupName, idx)"
         >
-          <LocationGroup :group="g" :selected-groups="selectedGroups" />
+          <LocationGroup
+            :group="g"
+            :selected-groups="selectedGroups"
+          />
         </div>
       </div>
     </div>
     <div class="grid gap-5">
       <div class="line"></div>
       <div class="grid grid-cols-2 gap-5">
-        <button class="btn w-full block" @click="checkRandomGroups()">
+        <button
+          class="btn w-full block"
+          @click="checkRandomGroups()"
+        >
           Рандом
         </button>
-        <button class="btn w-full block" @click="checkAllGroups()">
+        <button
+          class="btn w-full block"
+          @click="checkAllGroups()"
+        >
           Все
         </button>
       </div>
@@ -51,8 +60,7 @@
         <span
           class="btn w-full block"
           :class="{ 'btn-disabled': !isCheckedGroups }"
-          >Начать игру</span
-        >
+        >Начать игру</span>
       </button>
     </div>
   </div>
@@ -148,7 +156,7 @@ export default {
       const locationIdx = this.getRandomNumber(this.selectedLocations.length)
       const selectedLocation = this.selectedLocations[locationIdx]
       localStorage.setItem('selectedLocation', selectedLocation)
-      this.$router.push({path: '/play/roles-distribution'})
+      this.$router.push({ path: '/play/roles-distribution' })
     },
     saveSelectedGroups() {
       localStorage.setItem(
@@ -182,5 +190,4 @@ export default {
       width: 0;
     }
   }
-}
-</style>
+}</style>
